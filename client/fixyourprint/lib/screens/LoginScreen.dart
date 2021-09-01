@@ -1,13 +1,10 @@
-import 'package:fixyourprint/constants.dart';
 import 'package:fixyourprint/screens/RegisterScreen.dart';
-import 'package:fixyourprint/widgets/Button.dart';
+import 'package:fixyourprint/widgets/CustomButton.dart';
 import 'package:fixyourprint/widgets/FormField.dart';
+import 'package:fixyourprint/widgets/TapText.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
-
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -15,6 +12,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   String email = '';
   String password = '';
+  bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -58,38 +56,33 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: 80,
                 ),
-                TextFormField(
-                  onChanged: (value) => {
-                    email = value,
-                  },
-                  decoration: InputDecoration(
-                      labelText: 'email',
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.green,
-                        ),
-                      )),
-                ),
+                FormFieldWidget(
+                    labelText: 'email',
+                    onChanged: (value) {
+                      email = value;
+                    },
+                    obscureText: false,
+                    keyboardType: TextInputType.emailAddress),
                 SizedBox(
                   height: 25,
                 ),
-                TextFormField(
-                  onChanged: (value) => {
-                    password = value,
+                FormFieldWidget(
+                  labelText: 'password',
+                  onChanged: (value) {
+                    password = value;
                   },
-                  decoration: InputDecoration(
-                      labelText: 'password',
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.green,
-                        ),
-                      )),
+                  obscureText: _obscureText,
+                  keyboardType: TextInputType.visiblePassword,
+                  suffixIcon: Icon(
+                      _obscureText ? Icons.visibility : Icons.visibility_off),
                 ),
                 SizedBox(
                   height: 30,
                 ),
-                Button(
-                  onPressed: () {},
+                CustomButton(
+                  onPressed: () {
+                    print(email);
+                  },
                 ),
                 SizedBox(
                   height: 60,
@@ -101,19 +94,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       'New user?',
                       style: TextStyle(fontSize: 15),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            PageTransition(
-                                child: RegisterScreen(),
-                                type: PageTransitionType.leftToRight));
-                      },
-                      child: Text(
-                        ' Sign up Here!',
-                        style: TextStyle(color: Colors.green, fontSize: 15),
-                      ),
-                    )
+                    TapText(
+                      tapText: ' Sign up Here!',
+                      nextScreen: RegisterScreen(),
+                    ),
                   ],
                 )
               ],
