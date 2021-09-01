@@ -5,12 +5,15 @@ class FormFieldWidget extends StatefulWidget {
   final void Function(String)? onChanged;
   final bool obscureText;
   final Icon? suffixIcon;
+  final String? Function(String?)? validator;
   final TextInputType keyboardType;
+
   FormFieldWidget(
       {required this.labelText,
       required this.onChanged,
       required this.obscureText,
       this.suffixIcon,
+      this.validator,
       required this.keyboardType});
 
   @override
@@ -23,6 +26,7 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
     return TextFormField(
       onChanged: widget.onChanged,
       keyboardType: widget.keyboardType,
+      validator: widget.validator,
       obscureText: widget.obscureText,
       decoration: InputDecoration(
           labelText: widget.labelText,
