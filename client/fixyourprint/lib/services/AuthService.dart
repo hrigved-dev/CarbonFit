@@ -13,7 +13,7 @@ class AuthService {
   loginUser(String email, String password) async {
     try {
       var response = await dio.post(
-        'http://10.0.2.2:3000/users/login',
+        '$baseURL/users/login',
         data: {"email": email, "password": password},
         // options: Options(contentType: Headers.formUrlEncodedContentType)
       );
@@ -34,9 +34,10 @@ class AuthService {
         data: {"name": name, "email": email, "password": password},
         // options: Options(contentType: Headers.formUrlEncodedContentType)
       );
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         SharedPreferences preferences = await SharedPreferences.getInstance();
         await preferences.setString('token', response.data['token']);
+        print(response.data);
         return response.data['token'];
       } else {
         print('Error');

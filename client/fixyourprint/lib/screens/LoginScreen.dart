@@ -1,6 +1,7 @@
 import 'package:fixyourprint/screens/RegisterScreen.dart';
 import 'package:fixyourprint/screens/WelcomeScreen.dart';
 import 'package:fixyourprint/services/AuthService.dart';
+import 'package:fixyourprint/widgets/BottomText.dart';
 import 'package:fixyourprint/widgets/CustomButton.dart';
 import 'package:fixyourprint/widgets/FormField.dart';
 import 'package:fixyourprint/widgets/GreenLoader.dart';
@@ -88,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 80,
                       ),
                       FormFieldWidget(
-                          labelText: 'email',
+                          labelText: 'Email',
                           onChanged: (value) {
                             email = value;
                           },
@@ -98,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 25,
                       ),
                       FormFieldWidget(
-                        labelText: 'password',
+                        labelText: 'Password',
                         onChanged: (value) {
                           password = value;
                         },
@@ -112,6 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 30,
                       ),
                       CustomButton(
+                        text: 'LOGIN',
                         onPressed: () {
                           loginUser();
                         },
@@ -119,19 +121,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(
                         height: 60,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'New user?',
-                            style: TextStyle(fontSize: 15),
-                          ),
-                          TapText(
-                            tapText: ' Sign up Here!',
-                            nextScreen: RegisterScreen(),
-                          ),
-                        ],
-                      )
+                      BottomText(
+                          text: 'New User?',
+                          tapText: 'Sign Up Here',
+                          screen: RegisterScreen())
                     ],
                   ),
                 ),
