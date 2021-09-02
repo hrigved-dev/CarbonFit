@@ -15,7 +15,7 @@ class _TapTextState extends State<TapText> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
+        Navigator.pushReplacement(
             context,
             PageTransition(
                 child: widget.nextScreen,
