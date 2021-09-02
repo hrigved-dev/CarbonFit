@@ -1,4 +1,3 @@
-import 'package:fixyourprint/screens/LoginScreen.dart';
 import 'package:fixyourprint/screens/SplashScreen.dart';
 import 'package:fixyourprint/services/AuthService.dart';
 import 'package:fixyourprint/widgets/GreenLoader.dart';

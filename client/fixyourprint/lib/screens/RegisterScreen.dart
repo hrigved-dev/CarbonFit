@@ -143,7 +143,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           CustomButton(
                             text: "REGISTER",
                             onPressed: () {
-                              createUser();
+                              if (password == confirmpassword) {
+                                createUser();
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                        content:
+                                            Text('Passwords do not match')));
+                              }
                             },
                           ),
                           SizedBox(

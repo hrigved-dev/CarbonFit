@@ -3,17 +3,17 @@ import 'package:dio/dio.dart';
 
 class AuthService {
   Dio dio = new Dio();
-  var baseURL = 'http://10.0.2.2:3000';
+  var baseURL = "http://10.0.2.2:3000";
 
   getUsers() async {
-    var response = await dio.get('$baseURL/users');
+    var response = await dio.get("$baseURL/users");
     print(response.data.toString());
   }
 
   loginUser(String email, String password) async {
     try {
       var response = await dio.post(
-        '$baseURL/users/login',
+        "$baseURL/users/login",
         data: {"email": email, "password": password},
         // options: Options(contentType: Headers.formUrlEncodedContentType)
       );
@@ -24,25 +24,30 @@ class AuthService {
       } else {
         print(response.data['error']);
       }
-    } on DioError catch (e) {}
+    } on DioError catch (e) {
+      print(e);
+    }
   }
 
-  createUser(email, name, password) async {
+  createUser(String name, String email, String password) async {
     try {
       var response = await dio.post(
-        '$baseURL/users',
+        "$baseURL/users/createUser",
         data: {"name": name, "email": email, "password": password},
         // options: Options(contentType: Headers.formUrlEncodedContentType)
       );
+      print(response.statusCode);
+      print(response.data);
       if (response.statusCode == 201) {
         SharedPreferences preferences = await SharedPreferences.getInstance();
         await preferences.setString('token', response.data['token']);
-        print(response.data);
         return response.data['token'];
       } else {
-        print('Error');
+        print(response.data['error']);
       }
-    } on DioError catch (e) {}
+    } on DioError catch (e) {
+      print(e);
+    }
   }
 
   getToken() async {
@@ -64,7 +69,7 @@ class AuthService {
         return response.data;
       }
     } on DioError catch (e) {
-      print('Log out Error');
+      print('Log out Error $e');
     }
   }
 
@@ -77,6 +82,8 @@ class AuthService {
       if (response.statusCode == 200) {
         print(response.data);
       }
-    } on DioError catch (e) {}
+    } on DioError catch (e) {
+      print(e);
+    }
   }
 }

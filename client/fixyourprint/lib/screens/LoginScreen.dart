@@ -1,3 +1,4 @@
+import 'package:fixyourprint/screens/Dashboard.dart';
 import 'package:fixyourprint/screens/RegisterScreen.dart';
 import 'package:fixyourprint/screens/WelcomeScreen.dart';
 import 'package:fixyourprint/services/AuthService.dart';
@@ -5,7 +6,6 @@ import 'package:fixyourprint/widgets/BottomText.dart';
 import 'package:fixyourprint/widgets/CustomButton.dart';
 import 'package:fixyourprint/widgets/FormField.dart';
 import 'package:fixyourprint/widgets/GreenLoader.dart';
-import 'package:fixyourprint/widgets/TapText.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -35,10 +35,8 @@ class _LoginScreenState extends State<LoginScreen> {
       token = value;
       if (token != '') {
         _isLoading = false;
-        Navigator.pushReplacement(
-            context,
-            PageTransition(
-                child: WelcomeScreen(), type: PageTransitionType.fade));
+        Navigator.pushReplacement(context,
+            PageTransition(child: Dashboard(), type: PageTransitionType.fade));
       }
     });
   }
