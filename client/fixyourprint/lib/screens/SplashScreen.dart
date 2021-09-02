@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:fixyourprint/screens/LoginScreen.dart';
+import 'package:fixyourprint/screens/WelcomeScreen.dart';
+import 'package:fixyourprint/services/AuthService.dart';
 import 'package:fixyourprint/widgets/AnimatedTap.dart';
 import 'package:fixyourprint/widgets/BackgroundVideo.dart';
 import 'package:fixyourprint/widgets/SplashTitle.dart';
@@ -15,10 +17,25 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   double _opacity = 0;
+  String token = '';
+  bool _alreadySigned = false;
+
+  userSignedIn() {
+    AuthService().getToken().then((value) {
+      token = value;
+      if (token != '') {
+        setState(() {
+          _alreadySigned = true;
+        });
+      }
+    });
+  }
 
   @override
   void initState() {
     super.initState();
+    _alreadySigned = false;
+    userSignedIn();
     Timer(
         Duration(seconds: 3),
         () => {
@@ -45,11 +62,17 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
               GestureDetector(
                   onTap: () {
-                    Navigator.pushReplacement(
-                        context,
-                        PageTransition(
-                            child: LoginScreen(),
-                            type: PageTransitionType.fade));
+                    _alreadySigned
+                        ? Navigator.pushReplacement(
+                            context,
+                            PageTransition(
+                                child: WelcomeScreen(),
+                                type: PageTransitionType.fade))
+                        : Navigator.pushReplacement(
+                            context,
+                            PageTransition(
+                                child: LoginScreen(),
+                                type: PageTransitionType.fade));
                   },
                   child: AnimatedTap(opacity: _opacity)),
             ],

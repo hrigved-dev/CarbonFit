@@ -57,10 +57,13 @@ class AuthService {
     try {
       var response = await dio.post('$baseURL/users/logout');
       if (response.statusCode == 200) {
+        print('Log out Successful');
+        preferences.remove('token');
+        print(preferences.getString('token'));
         return response.data;
       }
     } on DioError catch (e) {
-      print('Error');
+      print('Log out Error');
     }
   }
 
