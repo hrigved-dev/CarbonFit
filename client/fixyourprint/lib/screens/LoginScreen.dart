@@ -3,6 +3,7 @@ import 'package:fixyourprint/screens/WelcomeScreen.dart';
 import 'package:fixyourprint/services/AuthService.dart';
 import 'package:fixyourprint/widgets/CustomButton.dart';
 import 'package:fixyourprint/widgets/FormField.dart';
+import 'package:fixyourprint/widgets/GreenLoader.dart';
 import 'package:fixyourprint/widgets/TapText.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
@@ -31,14 +32,12 @@ class _LoginScreenState extends State<LoginScreen> {
     });
     AuthService().loginUser(email, password).then((value) {
       token = value;
-      print(token);
       if (token != '') {
         _isLoading = false;
         Navigator.pushReplacement(
             context,
             PageTransition(
-                child: WelcomeScreen(token: token),
-                type: PageTransitionType.fade));
+                child: WelcomeScreen(), type: PageTransitionType.fade));
       }
     });
   }
@@ -48,17 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: _isLoading
-          ? Center(
-              child: Container(
-                height: 100,
-                width: 100,
-                child: Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.green,
-                  ),
-                ),
-              ),
-            )
+          ? GreenLoader()
           : Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

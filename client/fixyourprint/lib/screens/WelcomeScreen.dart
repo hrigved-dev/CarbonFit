@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class WelcomeScreen extends StatefulWidget {
-  final String token;
-  WelcomeScreen({Key? key, required this.token}) : super(key: key);
+  // final String token;
+  WelcomeScreen({Key? key}) : super(key: key);
 
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
@@ -13,11 +13,19 @@ class WelcomeScreen extends StatefulWidget {
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
   bool _isLoading = false;
+  String token = '';
 
   @override
   void initState() {
     super.initState();
-    _isLoading = false;
+    _isLoading = true;
+    AuthService().getToken().then((value) {
+      token = value;
+      print(token);
+      setState(() {
+        _isLoading = false;
+      });
+    });
   }
 
   logoutUser() async {
@@ -42,7 +50,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('WelcomeScreen and token is ' + widget.token),
+                  Text('WelcomeScreen and token is ' + token),
                   MaterialButton(
                       color: Colors.black,
                       onPressed: () {
