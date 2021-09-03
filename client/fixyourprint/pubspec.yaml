@@ -30,6 +30,7 @@ flutter:
     - assets/login/leafv3.png
     - assets/register/leafv3.png
     - assets/splash/splashscreen.mp4
+    - assets/welcome/earth.gif
   #   - images/a_dot_ham.jpeg
   fonts:
     - family: Lato

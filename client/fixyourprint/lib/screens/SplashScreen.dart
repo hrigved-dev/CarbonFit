@@ -74,7 +74,10 @@ class _SplashScreenState extends State<SplashScreen> {
                                 child: LoginScreen(),
                                 type: PageTransitionType.fade));
                   },
-                  child: AnimatedTap(opacity: _opacity)),
+                  child: AnimatedTap(
+                      text: 'Tap to Start',
+                      textStyle: TextStyle(fontSize: 18, color: Colors.white),
+                      opacity: _opacity)),
             ],
           ),
         ],

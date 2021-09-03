@@ -32,6 +32,7 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
           labelText: widget.labelText,
           suffixIcon: widget.suffixIcon,
           border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
             borderSide: BorderSide(
               color: Colors.green,
             ),
