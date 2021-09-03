@@ -82,7 +82,10 @@ class AuthService {
       var response = await dio.post('$baseURL/users/me');
       if (response.statusCode == 200) {
         print(response.data);
-        // User user = User();
+        User user = User(
+          name: response.data['name'],
+          email: response.data['email'],
+        );
       }
     } on DioError catch (e) {
       print(e);

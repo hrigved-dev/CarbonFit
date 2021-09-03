@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:ui';
-
 import 'package:fixyourprint/screens/Questionnaire.dart';
 import 'package:fixyourprint/screens/SplashScreen.dart';
 import 'package:fixyourprint/services/AuthService.dart';
@@ -21,13 +20,9 @@ class WelcomeScreen extends StatefulWidget {
 class _WelcomeScreenState extends State<WelcomeScreen> {
   bool _isLoading = false;
   String token = '';
-  double _chatbotOpacity = 0;
-  double _quesOpacity = 0;
-  double _dividerOpacity = 0;
-  double _chatbotContainerWidth = 0;
-  double _calculateContainerWidth = 0;
-  double _chatBotfontSize = 0;
-  double _calculatefontSize = 0;
+  double _opacity = 0;
+  double _containerWidth = 0;
+  double _fontSize = 0;
 
   @override
   void initState() {
@@ -41,27 +36,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       });
     });
     Timer(
-        Duration(seconds: 2),
+        Duration(seconds: 1),
         () => {
               setState(() => {
-                    _chatbotOpacity = 1,
-                    _chatbotContainerWidth = 100,
-                    _chatBotfontSize = 12
+                    _opacity = 1,
+                    _containerWidth = 100,
+                    _fontSize = 12,
                   }),
-            });
-    Timer(
-        Duration(seconds: 6),
-        () => {
-              setState(() => {
-                    _quesOpacity = 1,
-                    _calculateContainerWidth = 100,
-                    _calculatefontSize = 12
-                  }),
-            });
-    Timer(
-        Duration(seconds: 4),
-        () => {
-              setState(() => {_dividerOpacity = 1}),
             });
   }
 
@@ -114,19 +95,22 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     height: 50,
                   ),
                   AnimatedTap(
-                      opacity: _chatbotOpacity,
+                      opacity: _opacity,
                       text: "Wish to know more about Carbon Emissions?",
                       textStyle: TextStyle(color: Colors.black, fontSize: 18)),
                   AnimatedTap(
-                      opacity: _chatbotOpacity,
+                      opacity: _opacity,
                       text: "Talk to Ember- The AI Chatbot!",
                       textStyle: TextStyle(color: Colors.black, fontSize: 18)),
                   SizedBox(
                     height: 20,
                   ),
                   AnimatedButton(
-                      fontSize: _chatBotfontSize,
-                      width: _chatbotContainerWidth,
+                      onTap: () {
+                        logoutUser();
+                      },
+                      fontSize: _fontSize,
+                      width: _containerWidth,
                       name: "EMBER",
                       color: Colors.green),
                   SizedBox(height: 30),
@@ -134,7 +118,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     padding: EdgeInsets.symmetric(horizontal: 25),
                     child: AnimatedOpacity(
                       duration: Duration(seconds: 5),
-                      opacity: _dividerOpacity,
+                      opacity: _opacity,
                       child: Divider(
                         thickness: 2,
                         color: Colors.red[700],
@@ -145,11 +129,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     height: 20,
                   ),
                   AnimatedTap(
-                      opacity: _quesOpacity,
+                      opacity: _opacity,
                       text: "Wish to Calculate your Carbon Footprint?",
                       textStyle: TextStyle(color: Colors.black, fontSize: 18)),
                   AnimatedTap(
-                      opacity: _quesOpacity,
+                      opacity: _opacity,
                       text: "Calculate it Here!",
                       textStyle: TextStyle(color: Colors.black, fontSize: 18)),
                   SizedBox(
@@ -163,8 +147,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                 child: Questionnarie(),
                                 type: PageTransitionType.fade));
                       },
-                      fontSize: _calculatefontSize,
-                      width: _calculateContainerWidth,
+                      fontSize: _fontSize,
+                      width: _containerWidth,
                       name: "CALCULATE",
                       color: Colors.green)
                 ],
