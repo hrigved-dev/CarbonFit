@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:fixyourprint/screens/Questionnaire.dart';
 import 'package:fixyourprint/screens/SplashScreen.dart';
 import 'package:fixyourprint/services/AuthService.dart';
 import 'package:fixyourprint/widgets/AnimatedButton.dart';
@@ -25,6 +26,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   double _dividerOpacity = 0;
   double _chatbotContainerWidth = 0;
   double _calculateContainerWidth = 0;
+  double _chatBotfontSize = 0;
+  double _calculatefontSize = 0;
 
   @override
   void initState() {
@@ -40,14 +43,20 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     Timer(
         Duration(seconds: 2),
         () => {
-              setState(
-                  () => {_chatbotOpacity = 1, _chatbotContainerWidth = 100}),
+              setState(() => {
+                    _chatbotOpacity = 1,
+                    _chatbotContainerWidth = 100,
+                    _chatBotfontSize = 12
+                  }),
             });
     Timer(
         Duration(seconds: 6),
         () => {
-              setState(
-                  () => {_quesOpacity = 1, _calculateContainerWidth = 100}),
+              setState(() => {
+                    _quesOpacity = 1,
+                    _calculateContainerWidth = 100,
+                    _calculatefontSize = 12
+                  }),
             });
     Timer(
         Duration(seconds: 4),
@@ -116,6 +125,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     height: 20,
                   ),
                   AnimatedButton(
+                      fontSize: _chatBotfontSize,
                       width: _chatbotContainerWidth,
                       name: "EMBER",
                       color: Colors.green),
@@ -145,15 +155,18 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   SizedBox(
                     height: 20,
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      logoutUser();
-                    },
-                    child: AnimatedButton(
-                        width: _calculateContainerWidth,
-                        name: "CALCULATE",
-                        color: Colors.green),
-                  )
+                  AnimatedButton(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            PageTransition(
+                                child: Questionnarie(),
+                                type: PageTransitionType.fade));
+                      },
+                      fontSize: _calculatefontSize,
+                      width: _calculateContainerWidth,
+                      name: "CALCULATE",
+                      color: Colors.green)
                 ],
               ),
             ),

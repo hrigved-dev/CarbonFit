@@ -20,7 +20,7 @@ class _AnimatedTapState extends State<AnimatedTap> {
   Widget build(BuildContext context) {
     return AnimatedOpacity(
       opacity: widget.opacity,
-      duration: Duration(seconds: 3),
+      duration: Duration(seconds: 2),
       child: Text(
         widget.text,
         style: widget.textStyle,
