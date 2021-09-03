@@ -35,8 +35,10 @@ class _LoginScreenState extends State<LoginScreen> {
       token = value;
       if (token != '') {
         _isLoading = false;
-        Navigator.pushReplacement(context,
-            PageTransition(child: Dashboard(), type: PageTransitionType.fade));
+        Navigator.pushReplacement(
+            context,
+            PageTransition(
+                child: WelcomeScreen(), type: PageTransitionType.fade));
       }
     });
   }
@@ -117,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                       ),
                       SizedBox(
-                        height: 60,
+                        height: 80,
                       ),
                       BottomText(
                           text: 'New User?',
