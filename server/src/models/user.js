@@ -42,7 +42,7 @@ const userSchema = new mongoose.Schema({
 })
 
 //Creating a reference with user and carbonData
-userSchema.virtual('carbonData', {
+userSchema.virtual('carbonDatas', {
     ref: 'CarbonData',
     localField: '_id',
     foreignField: 'owner'

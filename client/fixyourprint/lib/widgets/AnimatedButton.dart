@@ -27,7 +27,7 @@ class _AnimatedButtonState extends State<AnimatedButton> {
       child: AnimatedContainer(
         decoration: BoxDecoration(
             color: widget.color, borderRadius: BorderRadius.circular(20)),
-        duration: Duration(seconds: 2),
+        duration: Duration(seconds: 1),
         child: Center(
             child: AnimatedDefaultTextStyle(
                 child: Text(widget.name),
