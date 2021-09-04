@@ -37,8 +37,6 @@ class AuthService {
         data: {"name": name, "email": email, "password": password},
         // options: Options(contentType: Headers.formUrlEncodedContentType)
       );
-      print(response.statusCode);
-      print(response.data);
       if (response.statusCode == 201) {
         SharedPreferences preferences = await SharedPreferences.getInstance();
         await preferences.setString('token', response.data['token']);

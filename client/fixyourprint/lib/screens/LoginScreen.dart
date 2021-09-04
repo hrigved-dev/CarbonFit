@@ -1,4 +1,3 @@
-import 'package:fixyourprint/screens/Dashboard.dart';
 import 'package:fixyourprint/screens/RegisterScreen.dart';
 import 'package:fixyourprint/screens/WelcomeScreen.dart';
 import 'package:fixyourprint/services/AuthService.dart';
