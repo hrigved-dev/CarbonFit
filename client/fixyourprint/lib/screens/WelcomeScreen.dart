@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:fixyourprint/screens/Questionnaire.dart';
 import 'package:fixyourprint/screens/SplashScreen.dart';
 import 'package:fixyourprint/services/AuthService.dart';
+import 'package:fixyourprint/services/CarbonDataService.dart';
 import 'package:fixyourprint/widgets/AnimatedButton.dart';
 import 'package:fixyourprint/widgets/AnimatedTap.dart';
 import 'package:fixyourprint/widgets/GreenLoader.dart';
@@ -28,6 +29,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   void initState() {
     super.initState();
     _isLoading = true;
+    CarbonDataService().electricityEmission(100);
     AuthService().getToken().then((value) {
       token = value;
       print(token);
