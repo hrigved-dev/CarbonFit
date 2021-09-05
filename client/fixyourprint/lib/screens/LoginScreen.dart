@@ -1,9 +1,10 @@
 import 'package:fixyourprint/screens/RegisterScreen.dart';
 import 'package:fixyourprint/screens/WelcomeScreen.dart';
 import 'package:fixyourprint/services/AuthService.dart';
+import 'package:fixyourprint/widgets/BottomText.dart';
 import 'package:fixyourprint/widgets/CustomButton.dart';
 import 'package:fixyourprint/widgets/FormField.dart';
-import 'package:fixyourprint/widgets/TapText.dart';
+import 'package:fixyourprint/widgets/GreenLoader.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -31,14 +32,12 @@ class _LoginScreenState extends State<LoginScreen> {
     });
     AuthService().loginUser(email, password).then((value) {
       token = value;
-      print(token);
       if (token != '') {
         _isLoading = false;
         Navigator.pushReplacement(
             context,
             PageTransition(
-                child: WelcomeScreen(token: token),
-                type: PageTransitionType.fade));
+                child: WelcomeScreen(), type: PageTransitionType.fade));
       }
     });
   }
@@ -48,17 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: _isLoading
-          ? Center(
-              child: Container(
-                height: 100,
-                width: 100,
-                child: Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.green,
-                  ),
-                ),
-              ),
-            )
+          ? GreenLoader()
           : Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -99,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 80,
                       ),
                       FormFieldWidget(
-                          labelText: 'email',
+                          labelText: 'Email',
                           onChanged: (value) {
                             email = value;
                           },
@@ -109,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 25,
                       ),
                       FormFieldWidget(
-                        labelText: 'password',
+                        labelText: 'Password',
                         onChanged: (value) {
                           password = value;
                         },
@@ -123,26 +112,18 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 30,
                       ),
                       CustomButton(
+                        text: 'LOGIN',
                         onPressed: () {
                           loginUser();
                         },
                       ),
                       SizedBox(
-                        height: 60,
+                        height: 80,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'New user?',
-                            style: TextStyle(fontSize: 15),
-                          ),
-                          TapText(
-                            tapText: ' Sign up Here!',
-                            nextScreen: RegisterScreen(),
-                          ),
-                        ],
-                      )
+                      BottomText(
+                          text: 'New User?',
+                          tapText: 'Sign Up Here',
+                          screen: RegisterScreen())
                     ],
                   ),
                 ),

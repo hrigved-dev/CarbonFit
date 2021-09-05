@@ -1,4 +1,3 @@
-import 'package:fixyourprint/screens/RegisterScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -16,7 +15,7 @@ class _TapTextState extends State<TapText> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
+        Navigator.pushReplacement(
             context,
             PageTransition(
                 child: widget.nextScreen,

@@ -5,6 +5,16 @@ const router = new express.Router()
 
 var total = 0;
 
+//get all carbon data
+router.get('/carbon', auth, async (req, res) => {
+    try {
+        await req.user.populate('carbonDatas').execPopulate()
+        res.send(req.user.carbonDatas)
+    } catch(e) {
+        res.status(500).send()
+    }
+})
+
 //creation endpoint of transport
 //input in Litres/year
 router.post('/carbon/transport', auth, async (req, res) => {
@@ -24,6 +34,11 @@ router.post('/carbon/transport', auth, async (req, res) => {
     } catch(e) {
         res.status(400).send(e)
     }
+})
+
+//update endpoint of transport
+router.patch('/carbon/transport', auth, async (req, res) => {
+
 })
 
 //creation endpoint of bus
