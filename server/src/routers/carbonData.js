@@ -36,9 +36,32 @@ router.post('/carbon/transport', auth, async (req, res) => {
     }
 })
 
-//update endpoint of transport
-router.patch('/carbon/transport', auth, async (req, res) => {
+//update endpoint
+router.patch('/carbon/:id', auth, async (req, res) => {
+    const _id = req.params.id
+    const updates = Object.keys(req.body)
+    const allowedUpdates = ['transport',  'bus', 'flight', 'train', 'lpg', 'electricity', 'waste', 'food']
+    const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
 
+    if(!isValidOperation) {
+        res.status(404).send({error: "Invalid updates"})
+    }
+
+    try {
+        const carbonData = await CarbonData.findOne({_id, owner: req.user._id})
+
+        if(!carbonData) {
+            res.status(404).send()
+        }
+
+        updates.forEach((update) => carbonData[update] = req.body[update])
+
+        await carbonData.save()
+
+        res.send(carbonData)
+    } catch(e) {
+        res.status(404).send()
+    }
 })
 
 //creation endpoint of bus
