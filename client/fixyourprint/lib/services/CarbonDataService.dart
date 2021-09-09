@@ -6,7 +6,7 @@ class CarbonDataService {
 
   var baseURL = 'http://10.0.2.2:3000';
 
-  electricityEmission(int electricity) async {
+  electricityEmission(double electricity) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var token = sharedPreferences.getString('token');
     dio.options.headers['authorization'] = "Bearer $token";
@@ -21,7 +21,7 @@ class CarbonDataService {
     }
   }
 
-  transportEmission(int transport) async {
+  transportEmission(double transport) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var token = sharedPreferences.getString('token');
     dio.options.headers['authorization'] = "Bearer $token";
@@ -36,7 +36,7 @@ class CarbonDataService {
     }
   }
 
-  busEmission(int bus) async {
+  busEmission(double bus) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var token = sharedPreferences.getString('token');
     dio.options.headers['authorization'] = "Bearer $token";
@@ -50,7 +50,7 @@ class CarbonDataService {
     }
   }
 
-  flightEmission(int flight) async {
+  flightEmission(double flight) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var token = sharedPreferences.getString('token');
     dio.options.headers['authorization'] = "Bearer $token";
@@ -65,7 +65,7 @@ class CarbonDataService {
     }
   }
 
-  trainEmission(int train) async {
+  trainEmission(double train) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var token = sharedPreferences.getString('token');
     dio.options.headers['authorization'] = "Bearer $token";
@@ -80,7 +80,7 @@ class CarbonDataService {
     }
   }
 
-  lpgEmission(int lpg) async {
+  lpgEmission(double lpg) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var token = sharedPreferences.getString('token');
     dio.options.headers['authorization'] = "Bearer $token";
@@ -94,7 +94,7 @@ class CarbonDataService {
     }
   }
 
-  wasteEmission(int waste) async {
+  wasteEmission(double waste) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var token = sharedPreferences.getString('token');
     dio.options.headers['authorization'] = "Bearer $token";
