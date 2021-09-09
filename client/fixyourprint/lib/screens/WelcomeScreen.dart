@@ -86,7 +86,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   ),
                   Text("LET'S EXPLORE",
                       style: TextStyle(
-                          color: Colors.blue[700],
+                          color: Colors.green[700],
                           fontSize: 25,
                           fontWeight: FontWeight.bold)),
                   Container(
@@ -146,7 +146,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         Navigator.push(
                             context,
                             PageTransition(
-                                child: Questionnarie(),
+                                child: Questionnaire(),
                                 type: PageTransitionType.fade));
                       },
                       fontSize: _fontSize,
