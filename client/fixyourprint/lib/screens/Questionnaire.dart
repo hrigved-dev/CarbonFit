@@ -1,5 +1,5 @@
 import 'package:fixyourprint/models/QuestionModel.dart';
-import 'package:fixyourprint/screens/FoodQues.dart';
+import 'package:fixyourprint/screens/Dashboard.dart';
 import 'package:fixyourprint/services/CarbonDataService.dart';
 import 'package:fixyourprint/services/Questions.dart';
 import 'package:fixyourprint/widgets/CustomButton.dart';
@@ -24,10 +24,12 @@ class _QuestionnaireState extends State<Questionnaire> {
   double sliderVal = 0;
   double widthVal = 0;
   double inputVal = 0;
+  bool _showSlider = true;
 
   @override
   void initState() {
     super.initState();
+    _showSlider = true;
     questionsList = Questions().getQuestions();
     getNextQuestion();
     topText = "Let's Start...";
@@ -37,9 +39,8 @@ class _QuestionnaireState extends State<Questionnaire> {
     index++;
     topText = 'One More...';
     widthVal = widthVal + 42.857142;
-    if (index > 6) {
-      Navigator.of(context).push(
-          PageTransition(child: FoodQuestion(), type: PageTransitionType.fade));
+    if (index >= 7) {
+      _showSlider = false;
     }
   }
 
@@ -54,7 +55,7 @@ class _QuestionnaireState extends State<Questionnaire> {
             Padding(
               padding: const EdgeInsets.only(right: 220, top: 50),
               child: Text(
-                topText,
+                _showSlider ? topText : 'One Last Thing...',
                 style: TextStyle(color: Colors.black, fontSize: 25),
               ),
             ),
@@ -90,20 +91,30 @@ class _QuestionnaireState extends State<Questionnaire> {
               width: 150,
               child: Lottie.network(questionsList[index].lottieUrl),
             ),
-            Slider(
-                min: 0,
-                max: 1000,
-                divisions: 5,
-                value: sliderVal,
-                label: sliderVal.round().toString(),
-                onChanged: (value) => setState(() => sliderVal = value)),
+            _showSlider
+                ? Slider(
+                    min: 0,
+                    max: 1000,
+                    divisions: 5,
+                    value: sliderVal,
+                    label: sliderVal.round().toString(),
+                    onChanged: (value) => setState(() => sliderVal = value))
+                : Text('Food'),
             SizedBox(
               height: 50,
             ),
             CustomButton(
-              text: 'NEXT',
+              text: _showSlider ? 'NEXT' : 'FINISH',
               onPressed: () {
                 setState(() {
+                  if (!_showSlider) {
+                    CarbonDataService().foodEmission("Meat Lover");
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            child: Dashboard(),
+                            type: PageTransitionType.leftToRight));
+                  }
                   getNextQuestion();
                   print(sliderVal);
                   CarbonDataService().emissionCalculation(

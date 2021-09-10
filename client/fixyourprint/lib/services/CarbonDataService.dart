@@ -14,7 +14,7 @@ class CarbonDataService {
       var response = await dio
           .post("$baseURL/carbon/$parameter", data: {"$parameter": value});
       if (response.statusCode == 201) {
-        print(response.data['$parameter']);
+        return response.data['$parameter'];
       }
     } on DioError catch (e) {
       print(e);

@@ -1,10 +1,8 @@
 import 'package:fixyourprint/models/QuestionModel.dart';
-import 'package:fixyourprint/services/CarbonDataService.dart';
 
 class Questions {
   List<QuestionModel> getQuestions() {
     var questionsList = <QuestionModel>[];
-    CarbonDataService carbonDataService = CarbonDataService();
 
     var ques1 = QuestionModel(
         question:
@@ -57,6 +55,13 @@ class Questions {
         lottieUrl:
             'https://assets7.lottiefiles.com/packages/lf20_ruf6eejr.json');
     questionsList.add(ques7);
+
+    var ques8 = QuestionModel(
+        question: "Which of the following represents your eating habits?",
+        parameter: 'food',
+        lottieUrl:
+            'https://assets6.lottiefiles.com/private_files/lf30_jxtfcl5y.json');
+    questionsList.add(ques8);
 
     return questionsList;
   }
