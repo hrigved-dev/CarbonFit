@@ -6,15 +6,15 @@ class CarbonDataService {
 
   var baseURL = 'http://10.0.2.2:3000';
 
-  electricityEmission(double electricity) async {
+  emissionCalculation(String parameter, double value) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var token = sharedPreferences.getString('token');
     dio.options.headers['authorization'] = "Bearer $token";
     try {
-      var response = await dio.post("$baseURL/carbon/electricity",
-          data: {"electricity": electricity});
+      var response = await dio
+          .post("$baseURL/carbon/$parameter", data: {"$parameter": value});
       if (response.statusCode == 201) {
-        return response.data['electricity'];
+        print(response.data['$parameter']);
       }
     } on DioError catch (e) {
       print(e);
