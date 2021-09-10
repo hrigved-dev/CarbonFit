@@ -132,7 +132,7 @@ class CarbonDataService {
       var response = await dio.get("$baseURL/carbon");
       if (response.statusCode == 201) {
         var total = response.data[7]['total'];
-        return total;
+        print(total);
       }
     } on DioError catch (e) {
       print(e);

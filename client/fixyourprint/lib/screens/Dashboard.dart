@@ -9,26 +9,11 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  double total = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    getTotal();
-  }
-
-  getTotal() async {
-    return await CarbonDataService().totalEmission().then((value) {
-      total = value;
-      print(total);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('This is Dashboard and total is $total'),
+        child: Text('This is Dashboard'),
       ),
     );
   }

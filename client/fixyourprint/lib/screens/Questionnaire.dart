@@ -3,6 +3,7 @@ import 'package:fixyourprint/screens/Dashboard.dart';
 import 'package:fixyourprint/services/CarbonDataService.dart';
 import 'package:fixyourprint/services/Questions.dart';
 import 'package:fixyourprint/widgets/CustomButton.dart';
+import 'package:fixyourprint/widgets/FoodButtons.dart';
 import 'package:fixyourprint/widgets/TopProgressBar.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -31,16 +32,22 @@ class _QuestionnaireState extends State<Questionnaire> {
     super.initState();
     _showSlider = true;
     questionsList = Questions().getQuestions();
-    getNextQuestion();
     topText = "Let's Start...";
   }
 
   getNextQuestion() {
-    index++;
-    topText = 'One More...';
-    widthVal = widthVal + 42.857142;
-    if (index >= 7) {
+    print(index);
+    if (index == 6) {
+      index = 7;
+      widthVal = widthVal + 42.857142;
+
       _showSlider = false;
+    } else if (index > 6) {
+      return;
+    } else {
+      index++;
+      topText = 'One More...';
+      widthVal = widthVal + 42.857142;
     }
   }
 
@@ -69,7 +76,7 @@ class _QuestionnaireState extends State<Questionnaire> {
               height: 5,
             ),
             Text(
-              '$index/7',
+              (index + 1).toString() + '/8',
               style: TextStyle(fontSize: 18),
             ),
             SizedBox(
@@ -99,7 +106,36 @@ class _QuestionnaireState extends State<Questionnaire> {
                     value: sliderVal,
                     label: sliderVal.round().toString(),
                     onChanged: (value) => setState(() => sliderVal = value))
-                : Text('Food'),
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Column(
+                        children: [
+                          FoodButton(label: 'Average Meat'),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          FoodButton(label: 'Meat Lover'),
+                        ],
+                      ),
+                      SizedBox(
+                        width: 40,
+                      ),
+                      Column(
+                        children: [
+                          FoodButton(
+                            label: 'No Red Meat',
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          FoodButton(
+                            label: 'Vegetarian',
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
             SizedBox(
               height: 50,
             ),
@@ -116,7 +152,6 @@ class _QuestionnaireState extends State<Questionnaire> {
                             type: PageTransitionType.leftToRight));
                   }
                   getNextQuestion();
-                  print(sliderVal);
                   CarbonDataService().emissionCalculation(
                       questionsList[index].parameter, sliderVal);
                 });
