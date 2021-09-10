@@ -29,7 +29,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   void initState() {
     super.initState();
     _isLoading = true;
-    CarbonDataService().electricityEmission(100);
+    // CarbonDataService().electricityEmission(100);
     AuthService().getToken().then((value) {
       token = value;
       print(token);
