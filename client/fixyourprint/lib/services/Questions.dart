@@ -6,7 +6,7 @@ class Questions {
 
     var ques1 = QuestionModel(
         question:
-            "Do you use private vehicle as a mode of your transport? If yes, how much distance do you travel by the private vehicle in a week?",
+            "Do you use private vehicle as a mode of your transport? If yes, how much distance do you travel in a week?",
         parameter: 'transport',
         lottieUrl:
             'https://assets6.lottiefiles.com/packages/lf20_rddfnr10.json');
