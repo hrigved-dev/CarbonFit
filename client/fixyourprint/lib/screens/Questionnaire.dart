@@ -26,6 +26,7 @@ class _QuestionnaireState extends State<Questionnaire> {
   double widthVal = 0;
   double inputVal = 0;
   bool _showSlider = true;
+  String foodVal = '';
 
   @override
   void initState() {
@@ -36,7 +37,6 @@ class _QuestionnaireState extends State<Questionnaire> {
   }
 
   getNextQuestion() {
-    print(index);
     if (index == 6) {
       index = 7;
       widthVal = widthVal + 42.857142;
@@ -101,8 +101,8 @@ class _QuestionnaireState extends State<Questionnaire> {
             _showSlider
                 ? Slider(
                     min: 0,
-                    max: 1000,
-                    divisions: 5,
+                    max: 5000,
+                    divisions: 25,
                     value: sliderVal,
                     label: sliderVal.round().toString(),
                     onChanged: (value) => setState(() => sliderVal = value))
@@ -144,7 +144,8 @@ class _QuestionnaireState extends State<Questionnaire> {
               onPressed: () {
                 setState(() {
                   if (!_showSlider) {
-                    CarbonDataService().foodEmission("Meat Lover");
+                    print(foodVal);
+                    // CarbonDataService().foodEmission("Meat Lover");
                     Navigator.push(
                         context,
                         PageTransition(
