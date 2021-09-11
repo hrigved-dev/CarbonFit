@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class FoodButton extends StatefulWidget {
   final String label;
-  // void Function()? onTap;
   FoodButton({required this.label});
 
   @override
@@ -10,19 +9,31 @@ class FoodButton extends StatefulWidget {
 }
 
 class _FoodButtonState extends State<FoodButton> {
+  Color _color = Colors.white;
+  bool _isTapped = false;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-          child: Text(
-        widget.label,
-        style: TextStyle(fontWeight: FontWeight.w600),
-      )),
-      height: 35,
-      width: 150,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: Colors.green)),
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _color = _isTapped ? Colors.white : Colors.green;
+          _isTapped = !_isTapped;
+        });
+      },
+      child: Container(
+        child: Center(
+            child: Text(
+          widget.label,
+          style: TextStyle(fontWeight: FontWeight.w600),
+        )),
+        height: 35,
+        width: 150,
+        decoration: BoxDecoration(
+            color: _color,
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: Colors.green)),
+      ),
     );
   }
 }
