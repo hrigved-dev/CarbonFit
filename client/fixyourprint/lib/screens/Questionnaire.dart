@@ -51,6 +51,10 @@ class _QuestionnaireState extends State<Questionnaire> {
     }
   }
 
+  getSelectedLabel(String label) {
+    foodVal = label;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -138,11 +142,18 @@ class _QuestionnaireState extends State<Questionnaire> {
                     children: [
                       Column(
                         children: [
-                          FoodButton(label: 'Average Meat'),
+                          FoodButton(
+                            label: 'Average Meat',
+                            function:
+                                getSelectedLabel('Average Meat Consumption'),
+                          ),
                           SizedBox(
                             height: 20,
                           ),
-                          FoodButton(label: 'Meat Lover'),
+                          FoodButton(
+                            label: 'Meat Lover',
+                            function: getSelectedLabel('Meat Lover'),
+                          ),
                         ],
                       ),
                       SizedBox(
@@ -152,12 +163,14 @@ class _QuestionnaireState extends State<Questionnaire> {
                         children: [
                           FoodButton(
                             label: 'No Red Meat',
+                            function: getSelectedLabel('No Red Meat'),
                           ),
                           SizedBox(
                             height: 20,
                           ),
                           FoodButton(
                             label: 'Vegetarian',
+                            function: getSelectedLabel('Vegetarian'),
                           ),
                         ],
                       ),
@@ -178,12 +191,13 @@ class _QuestionnaireState extends State<Questionnaire> {
                         PageTransition(
                             child: Dashboard(),
                             type: PageTransitionType.leftToRight));
+                  } else {
+                    getNextQuestion();
+                    print(sliderVal);
+                    CarbonDataService().emissionCalculation(
+                        questionsList[index].parameter, sliderVal);
+                    sliderVal = 0;
                   }
-                  getNextQuestion();
-                  print(sliderVal);
-                  CarbonDataService().emissionCalculation(
-                      questionsList[index].parameter, sliderVal);
-                  sliderVal = 0;
                 });
               },
             ),
