@@ -80,7 +80,7 @@ class _QuestionnaireState extends State<Questionnaire> {
               style: TextStyle(fontSize: 18),
             ),
             SizedBox(
-              height: 70,
+              height: 60,
             ),
             Text(
               questionsList[index].question,
@@ -99,13 +99,40 @@ class _QuestionnaireState extends State<Questionnaire> {
               child: Lottie.network(questionsList[index].lottieUrl),
             ),
             _showSlider
-                ? Slider(
-                    min: 0,
-                    max: 5000,
-                    divisions: 25,
-                    value: sliderVal,
-                    label: sliderVal.round().toString(),
-                    onChanged: (value) => setState(() => sliderVal = value))
+                ? Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(questionsList[index].min.toString(),
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.w600)),
+                          Text(questionsList[index].max.toString(),
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.w600)),
+                        ],
+                      ),
+                      SliderTheme(
+                        data: SliderThemeData(
+                            trackHeight: 16,
+                            thumbColor: Colors.green[900],
+                            thumbShape:
+                                RoundSliderThumbShape(enabledThumbRadius: 12),
+                            valueIndicatorColor: Colors.green[300],
+                            activeTickMarkColor: Colors.transparent,
+                            inactiveTickMarkColor: Colors.green[900]),
+                        child: Slider(
+                            min: questionsList[index].min,
+                            max: questionsList[index].max,
+                            divisions: questionsList[index].divisions,
+                            value: sliderVal,
+                            label: sliderVal.round().toString(),
+                            onChanged: (value) => setState(() {
+                                  sliderVal = value;
+                                })),
+                      ),
+                    ],
+                  )
                 : Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -137,7 +164,7 @@ class _QuestionnaireState extends State<Questionnaire> {
                     ],
                   ),
             SizedBox(
-              height: 50,
+              height: 40,
             ),
             CustomButton(
               text: _showSlider ? 'NEXT' : 'FINISH',
@@ -153,8 +180,10 @@ class _QuestionnaireState extends State<Questionnaire> {
                             type: PageTransitionType.leftToRight));
                   }
                   getNextQuestion();
+                  print(sliderVal);
                   CarbonDataService().emissionCalculation(
                       questionsList[index].parameter, sliderVal);
+                  sliderVal = 0;
                 });
               },
             ),
