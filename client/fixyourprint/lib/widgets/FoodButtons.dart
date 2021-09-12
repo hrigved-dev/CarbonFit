@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class FoodButton extends StatefulWidget {
   final String label;
-  FoodButton({required this.label});
+  Function? function;
+  FoodButton({required this.label, this.function});
 
   @override
   _FoodButtonState createState() => _FoodButtonState();
@@ -19,6 +20,7 @@ class _FoodButtonState extends State<FoodButton> {
         setState(() {
           _color = _isTapped ? Colors.white : Colors.green;
           _isTapped = !_isTapped;
+          widget.function;
         });
       },
       child: Container(
