@@ -1,4 +1,5 @@
 import 'package:fixyourprint/constants.dart';
+import 'package:fixyourprint/screens/Dashboard.dart';
 import 'package:fixyourprint/screens/Questionnaire.dart';
 import 'package:fixyourprint/screens/SplashScreen.dart';
 import 'package:flutter/material.dart';

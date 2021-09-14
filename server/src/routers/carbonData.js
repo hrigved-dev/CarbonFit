@@ -16,10 +16,10 @@ router.get('/carbon', auth, async (req, res) => {
 })
 
 //creation endpoint of transport
-//input in Litres/year
+//input in Litres in a week
 router.post('/carbon/transport', auth, async (req, res) => {
     const transportLitre = req.body.transport
-    const transportEm = (transportLitre * 2.4745)/1000
+    const transportEm = (transportLitre * 2.4745 * 52)/1000
     total = total + transportEm
 
     const carbonData = new CarbonData({
@@ -65,10 +65,10 @@ router.patch('/carbon/:id', auth, async (req, res) => {
 })
 
 //creation endpoint of bus
-//input in distance(km) travelled per year
+//input in distance(km) travelled per week
 router.post('/carbon/bus', auth, async (req, res) => {
     const busDistance = req.body.bus
-    const busEm = (busDistance * 0.1)/1000
+    const busEm = (busDistance * 0.1 * 52)/1000
     total = total + busEm
 
     const carbonData = new CarbonData({
@@ -86,7 +86,7 @@ router.post('/carbon/bus', auth, async (req, res) => {
 })
 
 //creation endpoint of flights
-//input in distance(km) travelled per year
+//input in distance(km) travelled
 router.post('/carbon/flight', auth, async (req, res) => {
     const flightDistance = req.body.flight
     const flightEm = (flightDistance * 0.1404)/1000
@@ -108,10 +108,10 @@ router.post('/carbon/flight', auth, async (req, res) => {
 })
 
 //creation endpoint of train
-//input in distance(km) travelled per year
+//input in distance(km) travelled per week
 router.post('/carbon/train', auth, async (req, res) => {
     const trainDistance = req.body.train
-    const trainEm = (trainDistance * 0.00795)/1000
+    const trainEm = (trainDistance * 0.00795 * 52)/1000
     total = total + trainEm
 
     const carbonData = new CarbonData({
@@ -130,10 +130,10 @@ router.post('/carbon/train', auth, async (req, res) => {
 })
 
 //creation endpoint of lpg
-//input in use(kg) per year
+//input in use(kg) per month
 router.post('/carbon/lpg', auth, async (req, res) => {
     const lpgUse = req.body.lpg
-    const lpgEm = (lpgUse * 2.983)/1000
+    const lpgEm = (lpgUse * 2.983 * 12)/1000
     total = total + lpgEm
 
     const carbonData = new CarbonData({
@@ -152,10 +152,10 @@ router.post('/carbon/lpg', auth, async (req, res) => {
 })
 
 //creation endpoint of electricity
-//input in use(kWh) per year
+//input in use(kWh) per month
 router.post('/carbon/electricity', auth, async (req, res) => {
     const electricityUse = req.body.electricity
-    const electricityEm = (electricityUse * 0.85)/1000
+    const electricityEm = (electricityUse * 0.85 * 12)/5000  //Assuming 5 people in a family
     total = total + electricityEm
 
     const carbonData = new CarbonData({
@@ -176,7 +176,7 @@ router.post('/carbon/electricity', auth, async (req, res) => {
 //input in production(kg) per week
 router.post('/carbon/waste', auth, async (req, res) => {
     const wasteProduction = req.body.waste
-    const wasteEm = (wasteProduction * 0.086 * 52)/1000
+    const wasteEm = (wasteProduction * 0.086 * 365)/5000  //Assuming 5 people in a family
     total = total + wasteEm
 
     const carbonData = new CarbonData({
