@@ -77,13 +77,13 @@ class AuthService {
     var token = preferences.getString('token');
     dio.options.headers['authorization'] = "Bearer $token";
     try {
-      var response = await dio.post('$baseURL/users/me');
+      var response = await dio.get('$baseURL/users/me');
       if (response.statusCode == 200) {
-        print(response.data);
-        User user = User(
-          name: response.data['name'],
-          email: response.data['email'],
-        );
+        return response.data['name'];
+        // User user = User(
+        //   name: response.data['name'],
+        //   email: response.data['email'],
+        // );
       }
     } on DioError catch (e) {
       print(e);

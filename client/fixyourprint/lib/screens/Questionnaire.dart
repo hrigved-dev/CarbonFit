@@ -51,8 +51,8 @@ class _QuestionnaireState extends State<Questionnaire> {
     }
   }
 
-  getSelectedLabel(String label) {
-    foodVal = label;
+  getLabel(int num) {
+    print(num);
   }
 
   @override
@@ -144,15 +144,12 @@ class _QuestionnaireState extends State<Questionnaire> {
                         children: [
                           FoodButton(
                             label: 'Average Meat',
-                            function:
-                                getSelectedLabel('Average Meat Consumption'),
                           ),
                           SizedBox(
                             height: 20,
                           ),
                           FoodButton(
                             label: 'Meat Lover',
-                            function: getSelectedLabel('Meat Lover'),
                           ),
                         ],
                       ),
@@ -163,14 +160,12 @@ class _QuestionnaireState extends State<Questionnaire> {
                         children: [
                           FoodButton(
                             label: 'No Red Meat',
-                            function: getSelectedLabel('No Red Meat'),
                           ),
                           SizedBox(
                             height: 20,
                           ),
                           FoodButton(
                             label: 'Vegetarian',
-                            function: getSelectedLabel('Vegetarian'),
                           ),
                         ],
                       ),
@@ -185,18 +180,21 @@ class _QuestionnaireState extends State<Questionnaire> {
                 setState(() {
                   if (!_showSlider) {
                     print(foodVal);
-                    // CarbonDataService().foodEmission("Meat Lover");
+                    CarbonDataService().foodEmission(foodVal);
                     Navigator.push(
                         context,
                         PageTransition(
                             child: Dashboard(),
                             type: PageTransitionType.leftToRight));
                   } else {
-                    getNextQuestion();
-                    print(sliderVal);
+                    print(questionsList[index].parameter +
+                        ":" +
+                        sliderVal.toString());
                     CarbonDataService().emissionCalculation(
                         questionsList[index].parameter, sliderVal);
                     sliderVal = 0;
+
+                    getNextQuestion();
                   }
                 });
               },
