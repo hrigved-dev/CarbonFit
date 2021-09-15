@@ -4,25 +4,46 @@ const carbonDataSchema = new mongoose.Schema({
     transport: {
         type: Number,
     },
+    transportEmission: {
+        type: Number,      
+    },
     bus: {
         type: Number,
+    },
+    busEmission: {
+        type: Number,      
     },
     flight: {
         type: Number,
     },
+    flightEmission: {
+        type: Number,      
+    },
     train : {
         type: Number,
+    },
+    trainEmission: {
+        type: Number,      
     },
     lpg: {
         type: Number,
     },
+    lpgEmission: {
+        type: Number,      
+    },
     electricity: {
         type: Number,
+    },
+    electriciyEmission: {
+        type: Number,      
     },
     waste: {
         type: Number,
     },
-    food: {
+    wasteEmission: {
+        type: Number,      
+    },
+    foodEmission: {
         type: String,
     },
     total: {
