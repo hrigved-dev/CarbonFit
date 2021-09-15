@@ -6,30 +6,31 @@ class CarbonDataService {
 
   var baseURL = 'http://10.0.2.2:3000';
 
-  emissionCalculation(String parameter, double value) async {
+  emissionCalculation(
+      double transportVal,
+      double busVal,
+      double flightVal,
+      double trainVal,
+      double lpgVal,
+      double electricityVal,
+      double wasteVal,
+      String foodVal) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var token = sharedPreferences.getString('token');
     dio.options.headers['authorization'] = "Bearer $token";
     try {
-      var response = await dio
-          .post("$baseURL/carbon/$parameter", data: {"$parameter": value});
+      var response = await dio.post("$baseURL/carbon", data: {
+        "transport": transportVal,
+        "bus": busVal,
+        "flight": flightVal,
+        "train": trainVal,
+        "lpg": lpgVal,
+        'electricity': electricityVal,
+        "waste": wasteVal,
+        "food": foodVal
+      });
       if (response.statusCode == 201) {
-        return response.data['$parameter'];
-      }
-    } on DioError catch (e) {
-      print(e);
-    }
-  }
-
-  foodEmission(String food) async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    var token = sharedPreferences.getString('token');
-    dio.options.headers['authorization'] = "Bearer $token";
-    try {
-      var response =
-          await dio.post("$baseURL/carbon/food", data: {"food": food});
-      if (response.statusCode == 201) {
-        return response.data['food'];
+        return response.data;
       }
     } on DioError catch (e) {
       print(e);
@@ -41,8 +42,8 @@ class CarbonDataService {
     var token = sharedPreferences.getString('token');
     dio.options.headers['authorization'] = "Bearer $token";
     try {
-      var response = await dio.get('http://10.0.2.2:3000/carbon');
-      return response.data[7]['total'];
+      var response = await dio.get('$baseURL/carbon');
+      return response.data[0]['total'];
     } on DioError catch (e) {
       print(e);
     }

@@ -18,6 +18,7 @@ class Questionnaire extends StatefulWidget {
 
 class _QuestionnaireState extends State<Questionnaire> {
   var questionsList = <QuestionModel>[];
+  String foodVal = '';
   double output = 0;
   String question = '';
   String topText = '';
@@ -26,7 +27,6 @@ class _QuestionnaireState extends State<Questionnaire> {
   double widthVal = 0;
   double inputVal = 0;
   bool _showSlider = true;
-  String foodVal = '';
 
   @override
   void initState() {
@@ -133,6 +133,7 @@ class _QuestionnaireState extends State<Questionnaire> {
                             label: sliderVal.round().toString(),
                             onChanged: (value) => setState(() {
                                   sliderVal = value;
+                                  questionsList[index].variable = sliderVal;
                                 })),
                       ),
                     ],
@@ -180,7 +181,16 @@ class _QuestionnaireState extends State<Questionnaire> {
                 setState(() {
                   if (!_showSlider) {
                     print(foodVal);
-                    CarbonDataService().foodEmission(foodVal);
+                    CarbonDataService().emissionCalculation(
+                      questionsList[0].variable,
+                      questionsList[1].variable,
+                      questionsList[2].variable,
+                      questionsList[3].variable,
+                      questionsList[4].variable,
+                      questionsList[5].variable,
+                      questionsList[6].variable,
+                      questionsList[7].variable,
+                    );
                     Navigator.push(
                         context,
                         PageTransition(
@@ -189,9 +199,9 @@ class _QuestionnaireState extends State<Questionnaire> {
                   } else {
                     print(questionsList[index].parameter +
                         ":" +
-                        sliderVal.toString());
-                    CarbonDataService().emissionCalculation(
-                        questionsList[index].parameter, sliderVal);
+                        sliderVal.toString() +
+                        ":" +
+                        questionsList[index].variable.toString());
                     sliderVal = 0;
 
                     getNextQuestion();

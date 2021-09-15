@@ -1,5 +1,3 @@
-import 'package:fixyourprint/models/QuestionModel.dart';
-import 'package:fixyourprint/services/CarbonDataService.dart';
 import 'package:flutter/material.dart';
 
 const kPrimaryColor = Colors.green;

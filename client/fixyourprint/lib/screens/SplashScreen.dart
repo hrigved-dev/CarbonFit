@@ -55,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 210),
-                child: SplashTitle(title: "FixYourPrint"),
+                child: SplashTitle(title: "CarbonFit"),
               ),
               SizedBox(
                 height: 200,
