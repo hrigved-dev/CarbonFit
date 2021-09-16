@@ -3,10 +3,11 @@ import 'package:fixyourprint/screens/Dashboard.dart';
 import 'package:fixyourprint/services/CarbonDataService.dart';
 import 'package:fixyourprint/services/Questions.dart';
 import 'package:fixyourprint/widgets/CustomButton.dart';
-import 'package:fixyourprint/widgets/FoodButtons.dart';
+import 'package:fixyourprint/widgets/CustomDropdown.dart';
+import 'package:fixyourprint/widgets/LottieFile.dart';
 import 'package:fixyourprint/widgets/TopProgressBar.dart';
+import 'package:fixyourprint/widgets/ValueSlider.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 
 class Questionnaire extends StatefulWidget {
@@ -18,7 +19,14 @@ class Questionnaire extends StatefulWidget {
 
 class _QuestionnaireState extends State<Questionnaire> {
   var questionsList = <QuestionModel>[];
-  String foodVal = '';
+  static final List<String> foodHabitChoices = <String>[
+    "Average Meat Consumption",
+    "Meat Lover",
+    "No Red Meat",
+    "Vegetarian",
+    "Vegan"
+  ];
+  String? foodVal = foodHabitChoices.first;
   double output = 0;
   String question = '';
   String topText = '';
@@ -37,17 +45,16 @@ class _QuestionnaireState extends State<Questionnaire> {
   }
 
   getNextQuestion() {
-    if (index == 6) {
-      index = 7;
-      widthVal = widthVal + 42.857142;
-
+    if (index == 7) {
+      index = 8;
+      widthVal = widthVal + 37.5;
       _showSlider = false;
-    } else if (index > 6) {
+    } else if (index > 7) {
       return;
     } else {
       index++;
       topText = 'One More...';
-      widthVal = widthVal + 42.857142;
+      widthVal = widthVal + 37.5;
     }
   }
 
@@ -71,20 +78,20 @@ class _QuestionnaireState extends State<Questionnaire> {
               ),
             ),
             SizedBox(
-              height: 30,
+              height: 25,
             ),
             TopProgressBar(
               widthval: widthVal,
             ),
             SizedBox(
-              height: 5,
+              height: 2,
             ),
             Text(
-              (index + 1).toString() + '/8',
+              (index + 1).toString() + '/9',
               style: TextStyle(fontSize: 18),
             ),
             SizedBox(
-              height: 60,
+              height: 40,
             ),
             Text(
               questionsList[index].question,
@@ -97,80 +104,41 @@ class _QuestionnaireState extends State<Questionnaire> {
             SizedBox(
               height: 10,
             ),
-            Container(
-              height: 150,
-              width: 150,
-              child: Lottie.network(questionsList[index].lottieUrl),
-            ),
+            LottieFile(url: questionsList[index].lottieUrl),
             _showSlider
                 ? Column(
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(questionsList[index].min.toString(),
+                          Text(questionsList[index].min.toStringAsFixed(0),
                               style: TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.w600)),
-                          Text(questionsList[index].max.toString(),
+                          Text(
+                              questionsList[index].max.toStringAsFixed(0) + "+",
                               style: TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.w600)),
                         ],
                       ),
-                      SliderTheme(
-                        data: SliderThemeData(
-                            trackHeight: 16,
-                            thumbColor: Colors.green[900],
-                            thumbShape:
-                                RoundSliderThumbShape(enabledThumbRadius: 12),
-                            valueIndicatorColor: Colors.green[300],
-                            activeTickMarkColor: Colors.transparent,
-                            inactiveTickMarkColor: Colors.green[900]),
-                        child: Slider(
-                            min: questionsList[index].min,
-                            max: questionsList[index].max,
-                            divisions: questionsList[index].divisions,
-                            value: sliderVal,
-                            label: sliderVal.round().toString(),
-                            onChanged: (value) => setState(() {
-                                  sliderVal = value;
-                                  questionsList[index].variable = sliderVal;
-                                })),
-                      ),
+                      ValueSlider(
+                          min: questionsList[index].min,
+                          sliderVal: sliderVal,
+                          max: questionsList[index].max,
+                          divisions: questionsList[index].divisions,
+                          onChanged: (value) => setState(() {
+                                sliderVal = value;
+                                questionsList[index].variable = sliderVal;
+                              })),
                     ],
                   )
-                : Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Column(
-                        children: [
-                          FoodButton(
-                            label: 'Average Meat',
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          FoodButton(
-                            label: 'Meat Lover',
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        width: 40,
-                      ),
-                      Column(
-                        children: [
-                          FoodButton(
-                            label: 'No Red Meat',
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          FoodButton(
-                            label: 'Vegetarian',
-                          ),
-                        ],
-                      ),
-                    ],
+                : Center(
+                    child: CustomDropDown(
+                      foodVal: foodVal,
+                      foodHabitChoices: foodHabitChoices,
+                      onChanged: (foodVal) => setState(() {
+                        this.foodVal = foodVal;
+                      }),
+                    ),
                   ),
             SizedBox(
               height: 40,
@@ -190,6 +158,7 @@ class _QuestionnaireState extends State<Questionnaire> {
                       questionsList[5].variable,
                       questionsList[6].variable,
                       questionsList[7].variable,
+                      questionsList[8].variable,
                     );
                     Navigator.push(
                         context,

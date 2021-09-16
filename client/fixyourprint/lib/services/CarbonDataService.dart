@@ -7,6 +7,7 @@ class CarbonDataService {
   var baseURL = 'http://10.0.2.2:3000';
 
   emissionCalculation(
+      double numberofPeople,
       double transportVal,
       double busVal,
       double flightVal,
@@ -20,6 +21,7 @@ class CarbonDataService {
     dio.options.headers['authorization'] = "Bearer $token";
     try {
       var response = await dio.post("$baseURL/carbon", data: {
+        "numberofPeople": numberofPeople,
         "transport": transportVal,
         "bus": busVal,
         "flight": flightVal,
