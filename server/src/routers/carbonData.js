@@ -7,6 +7,8 @@ const router = new express.Router()
 router.post('/carbon', auth, async (req, res) => {
     var totalEm = 0
 
+    const numberofPeople = req.body.numberofPeople
+
     const transportLitre = req.body.transport
     const transportEm = (transportLitre * 2.4745 * 52)/1000
 
@@ -23,10 +25,10 @@ router.post('/carbon', auth, async (req, res) => {
     const lpgEm = (lpgUse * 2.983 * 12)/1000
 
     const electricityUse = req.body.electricity
-    const electricityEm = (electricityUse * 0.85 * 12)/5000  //Assuming 5 people in a family
+    const electricityEm = (electricityUse * 0.85 * 12)/(numberofPeople * 1000)  
 
     const wasteProduction = req.body.waste
-    const wasteEm = (wasteProduction * 0.086 * 365)/5000  //Assuming 5 people in a family
+    const wasteEm = (wasteProduction * 0.086 * 365)/(numberofPeople * 1000)  
 
     const foodHabit = req.body.food
     var foodEm = 0
@@ -50,6 +52,8 @@ router.post('/carbon', auth, async (req, res) => {
     totalEm = transportEm + busEm + flightEm + trainEm + lpgEm + electricityEm + wasteEm + foodEm
 
     const carbonData = new CarbonData({
+        numberOfPeople: numberofPeople,
+
         transport: transportLitre,
         transportEmission: transportEm,
 

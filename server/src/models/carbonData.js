@@ -1,6 +1,9 @@
 const mongoose = require('mongoose')
 
 const carbonDataSchema = new mongoose.Schema({
+    numberofPeople: {
+        type: Number,
+    },
     transport: {
         type: Number,
     },
