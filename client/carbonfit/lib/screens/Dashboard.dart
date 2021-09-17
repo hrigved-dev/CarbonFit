@@ -21,9 +21,9 @@ class _DashboardState extends State<Dashboard> {
   @override
   void initState() {
     super.initState();
-    _isLoading = true;
-    getEmission();
-    getProfile();
+    _isLoading = false;
+    // getEmission();
+    // getProfile();
   }
 
   getProfile() async {
@@ -44,65 +44,30 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            Text("Hey"),
-            Text("Hey"),
-          ],
-        ),
-      ),
-      appBar: AppBar(
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8),
-            child: IconButton(
-                onPressed: () {
-                  setState(() {
-                    Navigator.of(context).push(PageTransition(
-                        child: ProfileInfo(),
-                        type: PageTransitionType.leftToRight));
-                  });
-                },
-                icon: Icon(Icons.person_outline)),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Hello $name, your footprint is...",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Row(
+            children: [
+              Text(
+                footprint.toString() + ' ',
+                style: TextStyle(fontSize: 50, fontWeight: FontWeight.w500),
+              ),
+              Text(
+                "tonnes CO2/year",
+                style: TextStyle(fontSize: 18),
+              ),
+            ],
           ),
         ],
-        iconTheme: IconThemeData(color: Colors.black),
-        elevation: 0,
-        backgroundColor: Colors.white,
       ),
-      body: _isLoading
-          ? Center(
-              child: CircularProgressIndicator(),
-            )
-          : Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Hello $name, your footprint is...",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        footprint.toString() + ' ',
-                        style: TextStyle(
-                            fontSize: 50, fontWeight: FontWeight.w500),
-                      ),
-                      Text(
-                        "tonnes CO2/year",
-                        style: TextStyle(fontSize: 18),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
     );
   }
 }
