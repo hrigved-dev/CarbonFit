@@ -1,7 +1,10 @@
 import 'dart:ui';
+import 'package:fixyourprint/screens/ProfileInfo.dart';
+import 'package:fixyourprint/screens/UpdateScreen.dart';
 import 'package:fixyourprint/services/AuthService.dart';
 import 'package:fixyourprint/services/CarbonDataService.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -53,7 +56,15 @@ class _DashboardState extends State<Dashboard> {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 8),
-            child: Icon(Icons.person_outline),
+            child: IconButton(
+                onPressed: () {
+                  setState(() {
+                    Navigator.of(context).push(PageTransition(
+                        child: ProfileInfo(),
+                        type: PageTransitionType.leftToRight));
+                  });
+                },
+                icon: Icon(Icons.person_outline)),
           ),
         ],
         iconTheme: IconThemeData(color: Colors.black),

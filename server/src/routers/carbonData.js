@@ -22,7 +22,7 @@ router.post('/carbon', auth, async (req, res) => {
     const trainEm = (trainDistance * 0.00795 * 52)/1000
 
     const lpgUse = req.body.lpg
-    const lpgEm = (lpgUse * 2.983 * 12)/1000
+    const lpgEm = (lpgUse * 2.983 * 12)/(numberofPeople * 1000)
 
     const electricityUse = req.body.electricity
     const electricityEm = (electricityUse * 0.85 * 12)/(numberofPeople * 1000)  
