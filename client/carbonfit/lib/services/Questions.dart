@@ -43,8 +43,8 @@ class Questions {
         lottieUrl:
             'https://assets10.lottiefiles.com/packages/lf20_cvcwsr0y.json',
         min: 0,
-        max: 200,
-        divisions: 50);
+        max: 2000,
+        divisions: 100);
     questionsList.add(ques3);
 
     var ques4 = QuestionModel(
@@ -82,7 +82,7 @@ class Questions {
 
     var ques7 = QuestionModel(
         question:
-            "What is your average electricity consumption in units in a month?",
+            "What is your average electricity consumption in kWh in a month?",
         parameter: 'electricity',
         variable: electricityVal,
         lottieUrl:
