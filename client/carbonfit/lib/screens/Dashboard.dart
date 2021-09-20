@@ -1,10 +1,9 @@
 import 'dart:ui';
-import 'package:fixyourprint/screens/ProfileInfo.dart';
-import 'package:fixyourprint/screens/UpdateScreen.dart';
+import 'package:fixyourprint/models/GraphDataModel.dart';
 import 'package:fixyourprint/services/AuthService.dart';
 import 'package:fixyourprint/services/CarbonDataService.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -22,8 +21,8 @@ class _DashboardState extends State<Dashboard> {
   void initState() {
     super.initState();
     _isLoading = false;
-    // getEmission();
-    // getProfile();
+    getEmission();
+    getProfile();
   }
 
   getProfile() async {

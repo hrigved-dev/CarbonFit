@@ -1,4 +1,5 @@
 import 'package:fixyourprint/screens/LoginScreen.dart';
+import 'package:fixyourprint/screens/Questionnaire.dart';
 import 'package:fixyourprint/widgets/BottomText.dart';
 import 'package:fixyourprint/widgets/CustomButton.dart';
 import 'package:fixyourprint/widgets/FormField.dart';
@@ -6,8 +7,6 @@ import 'package:fixyourprint/widgets/GreenLoader.dart';
 import 'package:flutter/material.dart';
 import 'package:fixyourprint/services/AuthService.dart';
 import 'package:page_transition/page_transition.dart';
-
-import 'WelcomeScreen.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -41,7 +40,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         Navigator.pushReplacement(
             context,
             PageTransition(
-                child: WelcomeScreen(), type: PageTransitionType.fade));
+                child: Questionnaire(), type: PageTransitionType.fade));
       }
     });
   }
@@ -56,9 +55,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 20, left: 90),
+                        padding: const EdgeInsets.only(top: 20, left: 70),
                         child: Container(
                             width: 300,
                             child: Image.asset(
@@ -69,7 +69,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ],
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 30,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -89,7 +89,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             style: TextStyle(fontSize: 22),
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 30,
                           ),
                           FormFieldWidget(
                             labelText: 'Name',
@@ -154,7 +154,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             },
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 40,
                           ),
                           BottomText(
                               text: 'Already a User?',

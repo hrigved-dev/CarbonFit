@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:fixyourprint/screens/Dashboard.dart';
+import 'package:fixyourprint/screens/Home.dart';
 import 'package:fixyourprint/screens/LoginScreen.dart';
 import 'package:fixyourprint/screens/WelcomeScreen.dart';
 import 'package:fixyourprint/services/AuthService.dart';
@@ -58,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: SplashTitle(title: "CarbonFit"),
               ),
               SizedBox(
-                height: 200,
+                height: 250,
               ),
               GestureDetector(
                   onTap: () {
@@ -66,8 +68,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         ? Navigator.pushReplacement(
                             context,
                             PageTransition(
-                                child: WelcomeScreen(),
-                                type: PageTransitionType.fade))
+                                child: Home(), type: PageTransitionType.fade))
                         : Navigator.pushReplacement(
                             context,
                             PageTransition(

@@ -1,6 +1,5 @@
 import 'package:fixyourprint/screens/Dashboard.dart';
 import 'package:fixyourprint/screens/RegisterScreen.dart';
-import 'package:fixyourprint/screens/WelcomeScreen.dart';
 import 'package:fixyourprint/services/AuthService.dart';
 import 'package:fixyourprint/widgets/BottomText.dart';
 import 'package:fixyourprint/widgets/CustomButton.dart';
@@ -117,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                       ),
                       SizedBox(
-                        height: 80,
+                        height: 130,
                       ),
                       BottomText(
                           text: 'New User?',

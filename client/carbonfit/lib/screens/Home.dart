@@ -1,3 +1,5 @@
+import 'package:fixyourprint/screens/Alternatives.dart';
+import 'package:fixyourprint/screens/CarbonInfo.dart';
 import 'package:fixyourprint/screens/Dashboard.dart';
 import 'package:fixyourprint/screens/DrawerTap.dart';
 import 'package:fixyourprint/screens/ProfileInfo.dart';
@@ -16,8 +18,8 @@ class _HomeState extends State<Home> {
   int currentIndex = 0;
   final screens = [
     Dashboard(),
-    Center(child: Text('Alternatives')),
-    Center(child: Text('AQ Index')),
+    Alternatives(),
+    CarbonInfo(),
     Center(child: Text('ChatBot'))
   ];
 
@@ -44,7 +46,7 @@ class _HomeState extends State<Home> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.air),
-            label: 'AQ Index',
+            label: 'CO2 Info',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.chat),
@@ -58,9 +60,10 @@ class _HomeState extends State<Home> {
           child: ListView(
             children: [
               Text(
-                "Hey There!",
+                "CarbonFit",
                 style: TextStyle(
                     fontSize: 26,
+                    color: Colors.green,
                     fontWeight: FontWeight.w700,
                     letterSpacing: 1),
               ),
@@ -75,21 +78,21 @@ class _HomeState extends State<Home> {
                 child: Questionnaire(),
               ),
               SizedBox(
-                height: 5,
+                height: 20,
               ),
               DrawerTap(
                 text: 'Countdown',
                 child: Home(),
               ),
               SizedBox(
-                height: 5,
+                height: 20,
               ),
               DrawerTap(
                 text: 'FAQ',
                 child: Home(),
               ),
               SizedBox(
-                height: 5,
+                height: 20,
               ),
               DrawerTap(
                 text: 'About Us',

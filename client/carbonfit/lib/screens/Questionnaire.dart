@@ -1,5 +1,6 @@
 import 'package:fixyourprint/models/QuestionModel.dart';
 import 'package:fixyourprint/screens/Dashboard.dart';
+import 'package:fixyourprint/screens/Home.dart';
 import 'package:fixyourprint/services/CarbonDataService.dart';
 import 'package:fixyourprint/services/Questions.dart';
 import 'package:fixyourprint/widgets/CustomButton.dart';
@@ -163,7 +164,7 @@ class _QuestionnaireState extends State<Questionnaire> {
                     Navigator.push(
                         context,
                         PageTransition(
-                            child: Dashboard(),
+                            child: Home(),
                             type: PageTransitionType.leftToRight));
                   } else {
                     print(questionsList[index].parameter +
