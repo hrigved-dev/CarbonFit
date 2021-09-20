@@ -16,8 +16,7 @@ class DrawerTap extends StatelessWidget {
       },
       child: Text(
         text,
-        style: TextStyle(
-            color: Colors.black, fontSize: 22, fontWeight: FontWeight.w400),
+        style: TextStyle(color: Colors.black87, fontSize: 22),
       ),
     );
   }
