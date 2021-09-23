@@ -1,4 +1,5 @@
 import 'package:fixyourprint/screens/Dashboard.dart';
+import 'package:fixyourprint/screens/Home.dart';
 import 'package:fixyourprint/screens/RegisterScreen.dart';
 import 'package:fixyourprint/services/AuthService.dart';
 import 'package:fixyourprint/widgets/BottomText.dart';
@@ -35,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
       if (token != '') {
         _isLoading = false;
         Navigator.pushReplacement(context,
-            PageTransition(child: Dashboard(), type: PageTransitionType.fade));
+            PageTransition(child: Home(), type: PageTransitionType.fade));
       }
     });
   }

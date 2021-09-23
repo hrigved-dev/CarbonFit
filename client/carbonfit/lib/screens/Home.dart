@@ -68,7 +68,7 @@ class _HomeState extends State<Home> {
                     letterSpacing: 1),
               ),
               Divider(
-                color: Colors.black,
+                color: Colors.grey,
               ),
               SizedBox(
                 height: 20,
@@ -103,6 +103,9 @@ class _HomeState extends State<Home> {
               ),
               Divider(
                 color: Colors.black,
+              ),
+              SizedBox(
+                height: 10,
               ),
               Row(
                 children: [

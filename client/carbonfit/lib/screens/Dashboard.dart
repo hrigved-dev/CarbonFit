@@ -1,12 +1,17 @@
 import 'dart:ui';
+// import 'package:fixyourprint/models/GraphDataModel.dart';
 import 'package:fixyourprint/models/GraphDataModel.dart';
 import 'package:fixyourprint/services/AuthService.dart';
 import 'package:fixyourprint/services/CarbonDataService.dart';
+import 'package:fixyourprint/widgets/BarGraphWidget.dart';
+import 'package:fixyourprint/widgets/DashboardData.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
 class Dashboard extends StatefulWidget {
-  const Dashboard({Key? key}) : super(key: key);
+  final Widget? child;
+  const Dashboard({Key? key, this.child}) : super(key: key);
 
   @override
   _DashboardState createState() => _DashboardState();
@@ -16,14 +21,6 @@ class _DashboardState extends State<Dashboard> {
   double footprint = 0;
   bool _isLoading = false;
   String name = '';
-
-  @override
-  void initState() {
-    super.initState();
-    _isLoading = false;
-    getEmission();
-    getProfile();
-  }
 
   getProfile() async {
     name = await AuthService().getProfile();
@@ -38,6 +35,14 @@ class _DashboardState extends State<Dashboard> {
     setState(() {
       _isLoading = false;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _isLoading = false;
+    // getEmission();
+    // getProfile();
   }
 
   @override
@@ -64,6 +69,12 @@ class _DashboardState extends State<Dashboard> {
                 style: TextStyle(fontSize: 18),
               ),
             ],
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          DashboardData(
+            footprint: footprint,
           ),
         ],
       ),
