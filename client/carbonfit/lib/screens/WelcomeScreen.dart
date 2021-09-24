@@ -144,7 +144,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         Navigator.push(
                             context,
                             PageTransition(
-                                child: Questionnaire(),
+                                child: Questionnaire(
+                                  isUpdate: false,
+                                ),
                                 type: PageTransitionType.fade));
                       },
                       fontSize: _fontSize,

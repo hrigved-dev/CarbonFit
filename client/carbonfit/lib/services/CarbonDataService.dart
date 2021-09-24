@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CarbonDataService {
@@ -32,6 +33,7 @@ class CarbonDataService {
         "food": foodVal
       });
       if (response.statusCode == 201) {
+        await sharedPreferences.setInt('id', response.data['id']);
         return response.data;
       }
     } on DioError catch (e) {
@@ -46,7 +48,42 @@ class CarbonDataService {
     try {
       var response = await dio.get('$baseURL/carbon');
       if (response.statusCode == 200) {
-        return response.data;
+        // var total = double.parse(response.data[0]['total']);
+        print(response.data[0]);
+      }
+    } on DioError catch (e) {
+      print(e);
+    }
+  }
+
+  updateEmission(
+      double numberofPeople,
+      double transportVal,
+      double busVal,
+      double flightVal,
+      double trainVal,
+      double lpgVal,
+      double electricityVal,
+      double wasteVal,
+      String foodVal) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    var id = sharedPreferences.getInt('id');
+    var token = sharedPreferences.getString('token');
+    dio.options.headers['authorization'] = "Bearer $token";
+    try {
+      var response = await dio.patch('$baseURL/carbon/$id', data: {
+        "numberofPeople": numberofPeople,
+        "transport": transportVal,
+        "bus": busVal,
+        "flight": flightVal,
+        "train": trainVal,
+        "lpg": lpgVal,
+        'electricity': electricityVal,
+        "waste": wasteVal,
+        "food": foodVal
+      });
+      if (response.statusCode == 200) {
+        print(response.data);
       }
     } on DioError catch (e) {
       print(e);
@@ -59,7 +96,7 @@ class CarbonDataService {
     dio.options.headers['authorization'] = "Bearer $token";
     try {
       var response = await dio.get('$baseURL/carbon');
-      return response.data[0]['total'];
+      print(response.data);
     } on DioError catch (e) {
       print(e);
     }

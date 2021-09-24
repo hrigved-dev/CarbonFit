@@ -1,5 +1,4 @@
 import 'package:fixyourprint/models/QuestionModel.dart';
-import 'package:fixyourprint/screens/Dashboard.dart';
 import 'package:fixyourprint/screens/Home.dart';
 import 'package:fixyourprint/services/CarbonDataService.dart';
 import 'package:fixyourprint/services/Questions.dart';
@@ -12,7 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
 class Questionnaire extends StatefulWidget {
-  const Questionnaire({Key? key}) : super(key: key);
+  final bool isUpdate;
+  Questionnaire({Key? key, required this.isUpdate}) : super(key: key);
 
   @override
   _QuestionnaireState createState() => _QuestionnaireState();
@@ -41,6 +41,7 @@ class _QuestionnaireState extends State<Questionnaire> {
     _showSlider = true;
     questionsList = Questions().getQuestions();
     topText = "Let's Start...";
+    print(widget.isUpdate);
   }
 
   getNextQuestion() {
@@ -154,17 +155,29 @@ class _QuestionnaireState extends State<Questionnaire> {
                 setState(() {
                   if (!_showSlider) {
                     print(foodVal);
-                    CarbonDataService().emissionCalculation(
-                      questionsList[0].variable,
-                      questionsList[1].variable,
-                      questionsList[2].variable,
-                      questionsList[3].variable,
-                      questionsList[4].variable,
-                      questionsList[5].variable,
-                      questionsList[6].variable,
-                      questionsList[7].variable,
-                      questionsList[8].variable,
-                    );
+                    widget.isUpdate
+                        ? CarbonDataService().updateEmission(
+                            questionsList[0].variable,
+                            questionsList[1].variable,
+                            questionsList[2].variable,
+                            questionsList[3].variable,
+                            questionsList[4].variable,
+                            questionsList[5].variable,
+                            questionsList[6].variable,
+                            questionsList[7].variable,
+                            questionsList[8].variable,
+                          )
+                        : CarbonDataService().emissionCalculation(
+                            questionsList[0].variable,
+                            questionsList[1].variable,
+                            questionsList[2].variable,
+                            questionsList[3].variable,
+                            questionsList[4].variable,
+                            questionsList[5].variable,
+                            questionsList[6].variable,
+                            questionsList[7].variable,
+                            questionsList[8].variable,
+                          );
                     Navigator.push(
                         context,
                         PageTransition(

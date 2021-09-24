@@ -2,8 +2,11 @@ import 'package:fixyourprint/screens/Alternatives.dart';
 import 'package:fixyourprint/screens/CarbonInfo.dart';
 import 'package:fixyourprint/screens/Dashboard.dart';
 import 'package:fixyourprint/screens/DrawerTap.dart';
+import 'package:fixyourprint/screens/LoginScreen.dart';
 import 'package:fixyourprint/screens/ProfileInfo.dart';
 import 'package:fixyourprint/screens/Questionnaire.dart';
+import 'package:fixyourprint/services/AuthService.dart';
+import 'package:fixyourprint/services/CarbonDataService.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -75,7 +78,9 @@ class _HomeState extends State<Home> {
               ),
               DrawerTap(
                 text: 'Recalculate',
-                child: Questionnaire(),
+                child: Questionnaire(
+                  isUpdate: true,
+                ),
               ),
               SizedBox(
                 height: 20,
@@ -107,20 +112,27 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: 10,
               ),
-              Row(
-                children: [
-                  Icon(Icons.logout),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Text(
-                    'Log Out',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
+              GestureDetector(
+                onTap: () {
+                  AuthService().logoutUser();
+                  Navigator.of(context).pushReplacement(PageTransition(
+                      child: LoginScreen(), type: PageTransitionType.fade));
+                },
+                child: Row(
+                  children: [
+                    Icon(Icons.logout),
+                    SizedBox(
+                      width: 5,
                     ),
-                  )
-                ],
+                    Text(
+                      'Log Out',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    )
+                  ],
+                ),
               )
             ],
           ),

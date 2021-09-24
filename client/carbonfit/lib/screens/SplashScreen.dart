@@ -1,8 +1,6 @@
 import 'dart:async';
-import 'package:fixyourprint/screens/Dashboard.dart';
 import 'package:fixyourprint/screens/Home.dart';
 import 'package:fixyourprint/screens/LoginScreen.dart';
-import 'package:fixyourprint/screens/WelcomeScreen.dart';
 import 'package:fixyourprint/services/AuthService.dart';
 import 'package:fixyourprint/widgets/AnimatedTap.dart';
 import 'package:fixyourprint/widgets/BackgroundVideo.dart';
