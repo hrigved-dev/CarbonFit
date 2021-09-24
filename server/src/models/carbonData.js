@@ -46,8 +46,11 @@ const carbonDataSchema = new mongoose.Schema({
     wasteEmission: {
         type: Number,      
     },
-    foodEmission: {
+    food: {
         type: String,
+    },
+    foodEmission: {
+        type: Number,
     },
     total: {
         type: Number
