@@ -18,19 +18,22 @@ class _GraphWidgetState extends State<GraphWidget> {
     super.initState();
     barDataClass.barData.add(
       GraphDataModel(
-          id: 0, footprint: widget.footprint, owner: 'Your', color: Colors.red),
+          id: 0,
+          footprint: widget.footprint,
+          owner: 'Your',
+          color: Color(0xFF22577A)),
     );
     barDataClass.barData.add(
       GraphDataModel(
-          id: 1, footprint: 1.75, owner: 'India Avg', color: Colors.blue),
+          id: 1, footprint: 1.75, owner: 'India Avg', color: Color(0XFF38A3A5)),
     );
     barDataClass.barData.add(
       GraphDataModel(
-          id: 2, footprint: 4.05, owner: 'World Avg', color: Colors.green),
+          id: 2, footprint: 4.05, owner: 'World Avg', color: Color(0XFF57CC99)),
     );
     barDataClass.barData.add(
       GraphDataModel(
-          id: 3, footprint: 1.2, owner: 'Target', color: Colors.amber),
+          id: 3, footprint: 1.2, owner: 'Target', color: Colors.green),
     );
   }
 
@@ -41,7 +44,7 @@ class _GraphWidgetState extends State<GraphWidget> {
       width: 400,
       child: Card(
         elevation: 4,
-        color: Colors.grey[300],
+        color: Color(0XFFF3EFCC),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(32),
         ),

@@ -39,6 +39,20 @@ class CarbonDataService {
     }
   }
 
+  getEmission() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    var token = sharedPreferences.getString('token');
+    dio.options.headers['authorization'] = "Bearer $token";
+    try {
+      var response = await dio.get('$baseURL/carbon');
+      if (response.statusCode == 200) {
+        return response.data;
+      }
+    } on DioError catch (e) {
+      print(e);
+    }
+  }
+
   totalEmission() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var token = sharedPreferences.getString('token');

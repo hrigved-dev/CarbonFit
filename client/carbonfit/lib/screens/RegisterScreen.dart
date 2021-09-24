@@ -79,14 +79,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           Text(
                             "Welcome,",
                             style: TextStyle(
-                                fontSize: 28, fontWeight: FontWeight.bold),
+                                fontFamily: 'Lato',
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold),
                           ),
                           SizedBox(
                             height: 2,
                           ),
                           Text(
                             "Register to Continue.",
-                            style: TextStyle(fontSize: 22),
+                            style: TextStyle(fontSize: 22, fontFamily: 'Lato'),
                           ),
                           SizedBox(
                             height: 30,

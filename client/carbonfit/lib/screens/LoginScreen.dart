@@ -74,14 +74,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       Text(
                         "Welcome,",
                         style: TextStyle(
-                            fontSize: 28, fontWeight: FontWeight.bold),
+                            fontFamily: 'Lato',
+                            fontSize: 28,
+                            fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
                         height: 2,
                       ),
                       Text(
                         "Sign in to Continue.",
-                        style: TextStyle(fontSize: 22),
+                        style: TextStyle(fontFamily: 'Lato', fontSize: 22),
                       ),
                       SizedBox(
                         height: 80,
