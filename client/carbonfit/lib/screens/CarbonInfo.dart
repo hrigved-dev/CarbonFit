@@ -11,7 +11,28 @@ class _CarbonInfoState extends State<CarbonInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text('CO2 Info')),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Carbon Data',
+            style: TextStyle(
+                fontSize: 22, fontFamily: 'Lato', fontWeight: FontWeight.bold),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Text(
+            'For thousands of years, the natural concentration of CO2 in earth atmosphere was around 280 ppm.\nFrom the beginning of the industrial revolution, human activities like the burning of fossil fuels, deforestation, and livestock have increased this amount by more than 30%.',
+            style: TextStyle(fontSize: 16),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Text(
+              'The following graph shows the Carbon Dioxide levels from 2010 to present.'),
+        ],
+      ),
     );
   }
 }

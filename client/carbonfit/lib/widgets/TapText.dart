@@ -23,7 +23,7 @@ class _TapTextState extends State<TapText> {
       },
       child: Text(
         widget.tapText,
-        style: TextStyle(color: Colors.green, fontSize: 15),
+        style: TextStyle(fontFamily: 'Lato', color: Colors.green, fontSize: 15),
       ),
     );
   }

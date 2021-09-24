@@ -21,11 +21,9 @@ class Questionnaire extends StatefulWidget {
 class _QuestionnaireState extends State<Questionnaire> {
   var questionsList = <QuestionModel>[];
   static final List<String> foodHabitChoices = <String>[
-    "Average Meat Consumption",
-    "Meat Lover",
-    "No Red Meat",
+    "Non-Vegetarian",
     "Vegetarian",
-    "Vegan"
+    "Vegan",
   ];
   String? foodVal = foodHabitChoices.first;
   double output = 0;
@@ -75,7 +73,8 @@ class _QuestionnaireState extends State<Questionnaire> {
               padding: const EdgeInsets.only(right: 220, top: 50),
               child: Text(
                 _showSlider ? topText : 'One Last Thing...',
-                style: TextStyle(color: Colors.black, fontSize: 25),
+                style: TextStyle(
+                    fontFamily: 'Lato', color: Colors.black, fontSize: 25),
               ),
             ),
             SizedBox(
@@ -89,7 +88,7 @@ class _QuestionnaireState extends State<Questionnaire> {
             ),
             Text(
               (index + 1).toString() + '/9',
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontFamily: 'Lato', fontSize: 18),
             ),
             SizedBox(
               height: 40,
@@ -97,6 +96,7 @@ class _QuestionnaireState extends State<Questionnaire> {
             Text(
               questionsList[index].question,
               style: TextStyle(
+                fontFamily: 'Lato',
                 fontWeight: FontWeight.w700,
                 color: Colors.black,
                 fontSize: 30,
@@ -114,11 +114,15 @@ class _QuestionnaireState extends State<Questionnaire> {
                         children: [
                           Text(questionsList[index].min.toStringAsFixed(0),
                               style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.w600)),
+                                  fontFamily: 'Lato',
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600)),
                           Text(
                               questionsList[index].max.toStringAsFixed(0) + "+",
                               style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.w600)),
+                                  fontFamily: 'Lato',
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600)),
                         ],
                       ),
                       ValueSlider(

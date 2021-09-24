@@ -9,6 +9,7 @@ class SplashTitle extends StatelessWidget {
     return Text(
       title,
       style: TextStyle(
+        fontFamily: 'Lato',
         color: Colors.white,
         fontSize: 36,
         fontWeight: FontWeight.bold,

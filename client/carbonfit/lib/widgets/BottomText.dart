@@ -19,7 +19,7 @@ class BottomText extends StatelessWidget {
       children: [
         Text(
           text,
-          style: TextStyle(fontSize: 15),
+          style: TextStyle(fontFamily: 'Lato', fontSize: 15),
         ),
         TapText(
           tapText: ' $tapText',

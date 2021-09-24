@@ -1,13 +1,8 @@
 import 'dart:ui';
-// import 'package:fixyourprint/models/GraphDataModel.dart';
-import 'package:fixyourprint/models/GraphDataModel.dart';
 import 'package:fixyourprint/services/AuthService.dart';
 import 'package:fixyourprint/services/CarbonDataService.dart';
-import 'package:fixyourprint/widgets/BarGraphWidget.dart';
 import 'package:fixyourprint/widgets/DashboardData.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:charts_flutter/flutter.dart' as charts;
 
 class Dashboard extends StatefulWidget {
   final Widget? child;
@@ -18,9 +13,10 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  double footprint = 0;
+  double footprint = 1.8;
   bool _isLoading = false;
   String name = '';
+  Color color = Colors.black;
 
   getProfile() async {
     name = await AuthService().getProfile();
@@ -29,12 +25,17 @@ class _DashboardState extends State<Dashboard> {
     });
   }
 
-  getEmission() async {
+  getParameterEmission() async {}
+
+  getTotalEmission() async {
     footprint = await CarbonDataService().totalEmission();
     footprint = double.parse(footprint.toStringAsFixed(2));
     setState(() {
       _isLoading = false;
     });
+    if (footprint > 1.8) {
+      color = Colors.red;
+    }
   }
 
   @override
@@ -53,7 +54,8 @@ class _DashboardState extends State<Dashboard> {
         children: [
           Text(
             "Hello $name, your footprint is...",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+            style: TextStyle(
+                fontFamily: 'Lato', fontSize: 22, fontWeight: FontWeight.w400),
           ),
           SizedBox(
             height: 5,
@@ -62,11 +64,15 @@ class _DashboardState extends State<Dashboard> {
             children: [
               Text(
                 footprint.toString() + ' ',
-                style: TextStyle(fontSize: 50, fontWeight: FontWeight.w500),
+                style: TextStyle(
+                    fontFamily: 'Lato',
+                    fontSize: 50,
+                    color: color,
+                    fontWeight: FontWeight.bold),
               ),
               Text(
                 "tonnes CO2/year",
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(fontFamily: 'Lato', fontSize: 18),
               ),
             ],
           ),

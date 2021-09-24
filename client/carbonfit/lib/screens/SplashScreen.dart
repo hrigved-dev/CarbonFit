@@ -77,7 +77,10 @@ class _SplashScreenState extends State<SplashScreen> {
                   },
                   child: AnimatedTap(
                       text: 'Tap to Start',
-                      textStyle: TextStyle(fontSize: 18, color: Colors.white),
+                      textStyle: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontFamily: 'Lato'),
                       opacity: _opacity)),
             ],
           ),
