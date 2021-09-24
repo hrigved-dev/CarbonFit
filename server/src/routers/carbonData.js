@@ -13,7 +13,7 @@ router.post('/carbon', auth, async (req, res) => {
     const transportEm = (transportLitre * 2.4745 * 52)/1000
 
     const busDistance = req.body.bus
-    const busEm = (busDistance * 0.1 * 52)/1000
+    const busEm = (busDistance * 0.0025 * 52)/1000  // 0.1/40 (per passenger)
 
     const flightDistance = req.body.flight
     const flightEm = (flightDistance * 0.1404)/1000
@@ -33,20 +33,20 @@ router.post('/carbon', auth, async (req, res) => {
     const foodHabit = req.body.food
     var foodEm = 0
 
-    if(foodHabit == "Average Meat Consumption") {
-        foodEm = 2.5
+    if(foodHabit == "Non-Vegetarian") {
+        foodEm = 0.310
     }
-    else if(foodHabit == "Meat Lover") {
-        foodEm = 3.3
-    }
-    else if(foodHabit == "No Red Meat") {
-        foodEm = 1.9
-    }
+    // else if(foodHabit == "Meat Lover") {
+    //     foodEm = 3.3
+    // }
+    // else if(foodHabit == "No Red Meat") {
+    //     foodEm = 1.9
+    // }
     else if(foodHabit == "Vegetarian") {
-        foodEm = 1.7
+        foodEm = 0.219
     }
     else {
-        foodEm = 1.5
+        foodEm = 0.116
     }
     
     totalEm = transportEm + busEm + flightEm + trainEm + lpgEm + electricityEm + wasteEm + foodEm
@@ -70,11 +70,12 @@ router.post('/carbon', auth, async (req, res) => {
         lpgEmission: lpgEm,
 
         electricity: electricityUse,
-        electricityEmission: electricityEm,
+        electriciyEmission: electricityEm,
 
         waste: wasteProduction,
         wasteEmission: wasteEm,
 
+        food: foodHabit,
         foodEmission: foodEm,
 
         total: totalEm,
