@@ -40,7 +40,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
         Navigator.pushReplacement(
             context,
             PageTransition(
-                child: Questionnaire(), type: PageTransitionType.fade));
+                child: Questionnaire(
+                  isUpdate: false,
+                ),
+                type: PageTransitionType.fade));
       }
     });
   }

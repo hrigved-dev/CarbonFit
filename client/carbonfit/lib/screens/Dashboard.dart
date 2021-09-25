@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:fixyourprint/services/AuthService.dart';
 import 'package:fixyourprint/services/CarbonDataService.dart';
 import 'package:fixyourprint/widgets/DashboardData.dart';
+import 'package:fixyourprint/widgets/GreenLoader.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
@@ -13,8 +14,8 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  double footprint = 1.8;
-  bool _isLoading = false;
+  double footprint = 0.0;
+  bool _isLoading = true;
   String name = '';
   Color color = Colors.black;
 
@@ -25,10 +26,12 @@ class _DashboardState extends State<Dashboard> {
     });
   }
 
-  getParameterEmission() async {}
+  getParameterEmission() async {
+    await CarbonDataService().getEmission();
+  }
 
   getTotalEmission() async {
-    footprint = await CarbonDataService().totalEmission();
+    // footprint = await CarbonDataService().totalEmission();
     footprint = double.parse(footprint.toStringAsFixed(2));
     setState(() {
       _isLoading = false;
@@ -41,49 +44,54 @@ class _DashboardState extends State<Dashboard> {
   @override
   void initState() {
     super.initState();
-    _isLoading = false;
-    // getEmission();
-    // getProfile();
+    _isLoading = true;
+    getTotalEmission();
+    getParameterEmission();
+    getProfile();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "Hello $name, your footprint is...",
-            style: TextStyle(
-                fontFamily: 'Lato', fontSize: 22, fontWeight: FontWeight.w400),
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Row(
-            children: [
-              Text(
-                footprint.toString() + ' ',
-                style: TextStyle(
-                    fontFamily: 'Lato',
-                    fontSize: 50,
-                    color: color,
-                    fontWeight: FontWeight.bold),
-              ),
-              Text(
-                "tonnes CO2/year",
-                style: TextStyle(fontFamily: 'Lato', fontSize: 18),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          DashboardData(
-            footprint: footprint,
-          ),
-        ],
-      ),
+      body: _isLoading
+          ? GreenLoader()
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Hello $name, your footprint is...",
+                  style: TextStyle(
+                      fontFamily: 'Lato',
+                      fontSize: 22,
+                      fontWeight: FontWeight.w400),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  children: [
+                    Text(
+                      footprint.toString() + ' ',
+                      style: TextStyle(
+                          fontFamily: 'Lato',
+                          fontSize: 50,
+                          color: color,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "tonnes CO2/year",
+                      style: TextStyle(fontFamily: 'Lato', fontSize: 18),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                DashboardData(
+                  footprint: footprint,
+                ),
+              ],
+            ),
     );
   }
 }
