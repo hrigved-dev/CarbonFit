@@ -10,23 +10,19 @@ class BarGraphInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 2),
-      child: Column(
+      child: Row(
         children: [
-          Row(
-            children: [
-              Container(
-                height: 15,
-                width: 15,
-                color: color,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Text(
-                barinfo,
-                style: TextStyle(fontFamily: 'Lato'),
-              ),
-            ],
+          Container(
+            height: 15,
+            width: 15,
+            color: color,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Text(
+            barinfo,
+            style: TextStyle(fontFamily: 'Lato'),
           ),
         ],
       ),

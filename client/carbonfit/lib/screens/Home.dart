@@ -1,7 +1,7 @@
 import 'package:fixyourprint/screens/Alternatives.dart';
 import 'package:fixyourprint/screens/CarbonInfo.dart';
 import 'package:fixyourprint/screens/Dashboard.dart';
-import 'package:fixyourprint/screens/DrawerTap.dart';
+import 'package:fixyourprint/widgets/DrawerTap.dart';
 import 'package:fixyourprint/screens/LoginScreen.dart';
 import 'package:fixyourprint/screens/ProfileInfo.dart';
 import 'package:fixyourprint/screens/Questionnaire.dart';
@@ -65,10 +65,11 @@ class _HomeState extends State<Home> {
               Text(
                 "CarbonFit",
                 style: TextStyle(
+                    fontFamily: 'Lato',
                     fontSize: 26,
                     color: Colors.green,
                     fontWeight: FontWeight.w700,
-                    letterSpacing: 1),
+                    letterSpacing: 1.5),
               ),
               Divider(
                 color: Colors.grey,

@@ -1,4 +1,3 @@
-//test
 const mongoose = require('mongoose')
 
 const carbonDataSchema = new mongoose.Schema({

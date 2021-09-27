@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
           scaffoldBackgroundColor: kBackgroundColor,
           fontFamily: 'Lato'),
-      home: Home(),
+      home: SplashScreen(),
     );
   }
 }
