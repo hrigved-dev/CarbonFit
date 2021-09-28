@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _alreadySigned = true; // CHANGE IT TO FALSE
+    _alreadySigned = false; 
     userSignedIn();
     Timer(
         Duration(seconds: 3),

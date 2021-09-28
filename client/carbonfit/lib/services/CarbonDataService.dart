@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class CarbonDataService {
   Dio dio = Dio();
 
-  var baseURL = 'http://10.0.2.2:3000';
+  var baseURL = 'http://localhost:3000';
 
   emissionCalculation(
       double numberofPeople,
@@ -32,7 +32,9 @@ class CarbonDataService {
         "food": foodVal
       });
       if (response.statusCode == 201) {
-        await sharedPreferences.setInt('id', response.data['id']);
+        // await sharedPreferences.setInt('id', response.data['id']);
+        SharedPreferences preferences = await SharedPreferences.getInstance();
+        await preferences.setString('_id', response.data[0]['_id']);
         return response.data;
       }
     } on DioError catch (e) {
@@ -47,8 +49,7 @@ class CarbonDataService {
     try {
       var response = await dio.get('$baseURL/carbon');
       if (response.statusCode == 200) {
-        // var total = double.parse(response.data[0]['total']);
-        print(response.data[0]);
+        return response.data;
       }
     } on DioError catch (e) {
       print(e);
@@ -66,8 +67,9 @@ class CarbonDataService {
       double wasteVal,
       String foodVal) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    var id = sharedPreferences.getInt('id');
+    var id = sharedPreferences.getString('_id');
     var token = sharedPreferences.getString('token');
+    print(id);
     dio.options.headers['authorization'] = "Bearer $token";
     try {
       var response = await dio.patch('$baseURL/carbon/$id', data: {
@@ -95,7 +97,10 @@ class CarbonDataService {
     dio.options.headers['authorization'] = "Bearer $token";
     try {
       var response = await dio.get('$baseURL/carbon');
-      print(response.data);
+      print(response.data[0]['_id']);
+      var id = response.data[0]['_id'];
+      await sharedPreferences.setString('_id', id);
+      return response.data[0]['total'];
     } on DioError catch (e) {
       print(e);
     }
