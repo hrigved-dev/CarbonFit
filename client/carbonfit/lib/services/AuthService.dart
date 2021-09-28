@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 
 class AuthService {
   Dio dio = new Dio();
-  var baseURL = "http://10.0.2.2:3000";
+  var baseURL = "http://localhost:3000";
 
   getUsers() async {
     var response = await dio.get("$baseURL/users");
