@@ -104,22 +104,70 @@ router.get('/carbon', auth, async (req, res) => {
 //update endpoint
 router.patch('/carbon/:id', auth, async (req, res) => {
     const _id = req.params.id
-    const updates = Object.keys(req.body)
-    const allowedUpdates = ['transport',  'bus', 'flight', 'train', 'lpg', 'electricity', 'waste', 'food']
-    const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
+    var totalEm = 0
 
-    if(!isValidOperation) {
-        res.status(404).send({error: "Invalid updates"})
+    const numberofPeople = req.body.numberofPeople
+
+    const transportLitre = req.body.transport
+    const transportEm = (transportLitre * 2.4745 * 52)/1000
+
+    const busDistance = req.body.bus
+    const busEm = (busDistance * 0.0025 * 52)/1000  
+
+    const flightDistance = req.body.flight
+    const flightEm = (flightDistance * 0.1404)/1000
+
+    const trainDistance = req.body.train
+    const trainEm = (trainDistance * 0.00795 * 52)/1000
+
+    const lpgUse = req.body.lpg
+    const lpgEm = (lpgUse * 2.983 * 12)/(numberofPeople * 1000)
+
+    const electricityUse = req.body.electricity
+    const electricityEm = (electricityUse * 0.85 * 12)/(numberofPeople * 1000)  
+
+    const wasteProduction = req.body.waste
+    const wasteEm = (wasteProduction * 0.086 * 365)/(numberofPeople * 1000)  
+
+    const foodHabit = req.body.food
+    var foodEm = 0
+
+    if(foodHabit == "Non-Vegetarian") {
+        foodEm = 0.310
     }
+    else if(foodHabit == "Vegetarian") {
+        foodEm = 0.219
+    }
+    else {
+        foodEm = 0.116
+    }
+    
+    totalEm = transportEm + busEm + flightEm + trainEm + lpgEm + electricityEm + wasteEm + foodEm
 
     try {
-        const carbonData = await CarbonData.findOne({_id, owner: req.user._id})
 
+        const carbonData = await CarbonData.findOne({_id, owner: req.user._id})
         if(!carbonData) {
             res.status(404).send()
         }
-
-        updates.forEach((update) => carbonData[update] = req.body[update])
+        carbonData['numberofPeople'] = numberofPeople
+        carbonData['transport'] = transportLitre
+        carbonData['transportEmission'] = transportEm
+        carbonData['bus'] = busDistance
+        carbonData['busEmission'] = busEm
+        carbonData['flight'] = flightDistance
+        carbonData['flightEmission'] = flightEm
+        carbonData['train'] = trainDistance
+        carbonData['trainEmission'] = trainEm
+        carbonData['lpg'] = lpgUse
+        carbonData['lpgEmission'] = lpgEm
+        carbonData['electricity'] = electricityUse
+        carbonData['electricityEmission'] = electricityEm
+        carbonData['waste'] = wasteProduction
+        carbonData['wasteEmission'] = wasteEm
+        carbonData['food'] = foodHabit
+        carbonData['foodEmission'] = foodEm
+        carbonData['total'] = totalEm
 
         await carbonData.save()
 
