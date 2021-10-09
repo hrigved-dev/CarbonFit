@@ -3,10 +3,9 @@ require('./db/mongoose')
 const userRouter = require('./routers/user')
 const carbonDataRouter = require('./routers/carbonData')
 const offsetDataRouter = require('./routers/offsetData')
-const alternativesRouter = require('./routers/alternativesData')
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT
 
 // app.use((req, res, next) => {
 //     res.status(503).send('Under Maintenance')
@@ -16,7 +15,6 @@ app.use(express.json())
 app.use(userRouter)
 app.use(carbonDataRouter)
 app.use(offsetDataRouter)
-app.use(alternativesRouter)
 
 app.listen(port, () => {
     console.log('Server is up on port ' + port);
