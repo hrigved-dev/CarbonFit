@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class CarbonDataService {
   Dio dio = Dio();
 
-  var baseURL = 'http://localhost:3000';
+  var baseURL = 'https://carbonfit-api.herokuapp.com';
 
   emissionCalculation(
       double numberofPeople,
@@ -32,9 +32,6 @@ class CarbonDataService {
         "food": foodVal
       });
       if (response.statusCode == 201) {
-        // await sharedPreferences.setInt('id', response.data['id']);
-        SharedPreferences preferences = await SharedPreferences.getInstance();
-        await preferences.setString('_id', response.data[0]['_id']);
         return response.data;
       }
     } on DioError catch (e) {
@@ -49,6 +46,8 @@ class CarbonDataService {
     try {
       var response = await dio.get('$baseURL/carbon');
       if (response.statusCode == 200) {
+        SharedPreferences preferences = await SharedPreferences.getInstance();
+        await preferences.setString('_id', response.data[0]['_id']);
         return response.data;
       }
     } on DioError catch (e) {
@@ -86,21 +85,6 @@ class CarbonDataService {
       if (response.statusCode == 200) {
         print(response.data);
       }
-    } on DioError catch (e) {
-      print(e);
-    }
-  }
-
-  totalEmission() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    var token = sharedPreferences.getString('token');
-    dio.options.headers['authorization'] = "Bearer $token";
-    try {
-      var response = await dio.get('$baseURL/carbon');
-      print(response.data[0]['_id']);
-      var id = response.data[0]['_id'];
-      await sharedPreferences.setString('_id', id);
-      return response.data[0]['total'];
     } on DioError catch (e) {
       print(e);
     }

@@ -18,6 +18,7 @@ class _DashboardState extends State<Dashboard> {
   bool _isLoading = true;
   String name = '';
   Color color = Colors.black;
+  List<dynamic> responseData = [];
 
   getProfile() async {
     name = await AuthService().getProfile();
@@ -31,8 +32,9 @@ class _DashboardState extends State<Dashboard> {
   }
 
   getTotalEmission() async {
-    // await CarbonDataService().totalEmission();
-    footprint = await CarbonDataService().totalEmission();
+    _isLoading = true;
+    responseData = await CarbonDataService().getEmission();
+    footprint = responseData[0]['total'];
     footprint = double.parse(footprint.toStringAsFixed(2));
     setState(() {
       _isLoading = false;
@@ -43,9 +45,11 @@ class _DashboardState extends State<Dashboard> {
   void initState() {
     super.initState();
     _isLoading = true;
-    getTotalEmission();
-    getParameterEmission();
-    getProfile();
+    setState(() {
+      getParameterEmission();
+      getProfile();
+      getTotalEmission();
+    });
   }
 
   @override

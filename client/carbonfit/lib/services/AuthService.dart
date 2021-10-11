@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 
 class AuthService {
   Dio dio = new Dio();
-  var baseURL = "http://localhost:3000";
+  var baseURL = "https://carbonfit-api.herokuapp.com/";
 
   getUsers() async {
     var response = await dio.get("$baseURL/users");
@@ -13,7 +13,7 @@ class AuthService {
   loginUser(String email, String password) async {
     try {
       var response = await dio.post(
-        "$baseURL/users/login",
+        "https://carbonfit-api.herokuapp.com/users/login",
         data: {"email": email, "password": password},
         // options: Options(contentType: Headers.formUrlEncodedContentType)
       );
@@ -32,7 +32,7 @@ class AuthService {
   createUser(String name, String email, String password) async {
     try {
       var response = await dio.post(
-        "$baseURL/users/createUser",
+        "https://carbonfit-api.herokuapp.com/users/createUser",
         data: {"name": name, "email": email, "password": password},
         // options: Options(contentType: Headers.formUrlEncodedContentType)
       );
@@ -59,7 +59,8 @@ class AuthService {
     var token = preferences.getString('token');
     dio.options.headers['authorization'] = "Bearer $token";
     try {
-      var response = await dio.post('$baseURL/users/logout');
+      var response =
+          await dio.post('https://carbonfit-api.herokuapp.com/users/logout');
       if (response.statusCode == 200) {
         print('Log out Successful');
         preferences.remove('token');
@@ -76,7 +77,8 @@ class AuthService {
     var token = preferences.getString('token');
     dio.options.headers['authorization'] = "Bearer $token";
     try {
-      var response = await dio.get('$baseURL/users/me');
+      var response =
+          await dio.get('https://carbonfit-api.herokuapp.com/users/me');
       if (response.statusCode == 200) {
         return response.data['name'];
         // User user = User(
