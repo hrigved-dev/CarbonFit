@@ -9,6 +9,7 @@ router.post('/offset', async (req, res) => {
     const min = req.body.Min
     const availability = req.body.Availability
     const link = req.body.Link
+    const image = req.body.Image
 
     const offsetData = new OffsetData({
         Name: name,
@@ -16,7 +17,8 @@ router.post('/offset', async (req, res) => {
         Brief: brief,
         Min: min,
         Availability: availability,
-        Link: link
+        Link: link,
+        Image: image
     })
 
     try {
@@ -36,6 +38,21 @@ router.get('/offset', async (req, res) => {
     } catch(e) {
         res.status(500).send()
 
+    }
+})
+
+router.delete('/offset/:id', async (req, res) => {
+    const _id = req.params.id
+
+    try {
+        const offset = await OffsetData.findOneAndDelete({_id})
+
+        if(!offset) {
+            res.send(404).send()
+        }
+        res.send(offset)
+    } catch(e) {
+        res.status(500).send()
     }
 })
 

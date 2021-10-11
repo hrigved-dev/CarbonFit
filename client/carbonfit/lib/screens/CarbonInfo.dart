@@ -16,7 +16,7 @@ class _CarbonInfoState extends State<CarbonInfo> {
   }
 
   getData() async {
-    await GlobalWarmingService().getData();
+    // await GlobalWarmingService().getData();
   }
 
   @override
