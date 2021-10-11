@@ -6,7 +6,6 @@ import 'package:fixyourprint/screens/LoginScreen.dart';
 import 'package:fixyourprint/screens/ProfileInfo.dart';
 import 'package:fixyourprint/screens/Questionnaire.dart';
 import 'package:fixyourprint/services/AuthService.dart';
-import 'package:fixyourprint/services/CarbonDataService.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -148,7 +147,7 @@ class _HomeState extends State<Home> {
                   setState(() {
                     Navigator.of(context).push(PageTransition(
                         child: ProfileInfo(),
-                        type: PageTransitionType.leftToRight));
+                        type: PageTransitionType.rightToLeft));
                   });
                 },
                 icon: Icon(Icons.person_outline)),

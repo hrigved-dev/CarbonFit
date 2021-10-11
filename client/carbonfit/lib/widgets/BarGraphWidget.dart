@@ -16,6 +16,7 @@ class _GraphWidgetState extends State<GraphWidget> {
   FootprintBarData barDataClass = FootprintBarData();
   bool _isLoading = false;
   double footprint = 0.0;
+  List<dynamic> responseData = [];
 
   @override
   void initState() {
@@ -25,7 +26,8 @@ class _GraphWidgetState extends State<GraphWidget> {
   }
 
   getFootprint() async {
-    footprint = await CarbonDataService().totalEmission();
+    responseData = await CarbonDataService().getEmission();
+    footprint = responseData[0]['total'];
     footprint = double.parse(footprint.toStringAsFixed(2));
     setState(() {
       _isLoading = false;

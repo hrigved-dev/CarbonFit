@@ -1,3 +1,4 @@
+import 'package:fixyourprint/services/GlobalWarmingService.dart';
 import 'package:flutter/material.dart';
 
 class CarbonInfo extends StatefulWidget {
@@ -8,6 +9,16 @@ class CarbonInfo extends StatefulWidget {
 }
 
 class _CarbonInfoState extends State<CarbonInfo> {
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  getData() async {
+    await GlobalWarmingService().getData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
