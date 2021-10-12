@@ -1,6 +1,9 @@
+import 'package:fixyourprint/screens/AboutUs.dart';
 import 'package:fixyourprint/screens/Alternatives.dart';
 import 'package:fixyourprint/screens/CarbonInfo.dart';
+import 'package:fixyourprint/screens/Countdown.dart';
 import 'package:fixyourprint/screens/Dashboard.dart';
+import 'package:fixyourprint/screens/FAQs.dart';
 import 'package:fixyourprint/widgets/DrawerTap.dart';
 import 'package:fixyourprint/screens/LoginScreen.dart';
 import 'package:fixyourprint/screens/ProfileInfo.dart';
@@ -87,21 +90,21 @@ class _HomeState extends State<Home> {
               ),
               DrawerTap(
                 text: 'Countdown',
-                child: Home(),
+                child: Countdown(),
               ),
               SizedBox(
                 height: 20,
               ),
               DrawerTap(
                 text: 'FAQ',
-                child: Home(),
+                child: FAQ(),
               ),
               SizedBox(
                 height: 20,
               ),
               DrawerTap(
                 text: 'About Us',
-                child: Home(),
+                child: AboutUs(),
               ),
               SizedBox(
                 height: 20,
