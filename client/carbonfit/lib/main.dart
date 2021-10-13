@@ -1,9 +1,7 @@
 import 'package:fixyourprint/constants.dart';
-import 'package:fixyourprint/screens/Home.dart';
 import 'package:fixyourprint/screens/SplashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fixyourprint/screens/FAQs.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -25,7 +23,7 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
           scaffoldBackgroundColor: kBackgroundColor,
           fontFamily: 'Lato'),
-      home:FAQ() ,
+      home: SplashScreen(),
     );
   }
 }

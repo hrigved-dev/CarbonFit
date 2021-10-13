@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-
 class OffsetDataModel {
   late String Name;
   late String Id;
