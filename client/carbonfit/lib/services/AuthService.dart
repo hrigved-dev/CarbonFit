@@ -81,10 +81,6 @@ class AuthService {
           await dio.get('https://carbonfit-api.herokuapp.com/users/me');
       if (response.statusCode == 200) {
         return response.data['name'];
-        // User user = User(
-        //   name: response.data['name'],
-        //   email: response.data['email'],
-        // );
       }
     } on DioError catch (e) {
       print(e);
