@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
+// ignore: must_be_immutable
 class TapText extends StatefulWidget {
   late String tapText;
   late Widget nextScreen;
