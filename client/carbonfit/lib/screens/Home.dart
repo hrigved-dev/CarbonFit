@@ -1,9 +1,10 @@
 import 'package:fixyourprint/screens/AboutUs.dart';
-import 'package:fixyourprint/screens/Alternatives.dart';
+import 'package:fixyourprint/screens/OffsetScreen.dart';
 import 'package:fixyourprint/screens/CarbonInfo.dart';
 import 'package:fixyourprint/screens/Countdown.dart';
 import 'package:fixyourprint/screens/Dashboard.dart';
 import 'package:fixyourprint/screens/FAQs.dart';
+import 'package:fixyourprint/screens/Solutions.dart';
 import 'package:fixyourprint/widgets/DrawerTap.dart';
 import 'package:fixyourprint/screens/LoginScreen.dart';
 import 'package:fixyourprint/screens/ProfileInfo.dart';
@@ -23,7 +24,7 @@ class _HomeState extends State<Home> {
   int currentIndex = 0;
   final screens = [
     Dashboard(),
-    Alternatives(),
+    Solutions(),
     CarbonInfo(),
     Center(child: Text('ChatBot'))
   ];
@@ -47,7 +48,7 @@ class _HomeState extends State<Home> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.alt_route),
-            label: 'Alternatives',
+            label: 'Solutions',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.air),

@@ -1,7 +1,7 @@
 import 'package:fixyourprint/models/QuestionModel.dart';
 import 'package:fixyourprint/screens/Home.dart';
 import 'package:fixyourprint/services/CarbonDataService.dart';
-import 'package:fixyourprint/services/Questions.dart';
+import 'package:fixyourprint/data/Questions.dart';
 import 'package:fixyourprint/widgets/CustomButton.dart';
 import 'package:fixyourprint/widgets/CustomDropdown.dart';
 import 'package:fixyourprint/widgets/LottieFile.dart';

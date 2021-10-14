@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:url_launcher/link.dart';
 import 'package:fixyourprint/widgets/CustomButton.dart';
 import 'package:fixyourprint/widgets/ImageView.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +33,7 @@ class OffsetDetail extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 50, bottom: 20),
-              child: ImageView(Image: Image, Availability: Availability),
+              child: ImageView(Image: Image, Id: Id),
             ),
             Text(
               Name,

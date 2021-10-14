@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class ImageView extends StatelessWidget {
   final String Image;
-  final String Availability;
-  const ImageView({Key? key, required this.Image, required this.Availability})
+  final String Id;
+  const ImageView({Key? key, required this.Image, required this.Id})
       : super(key: key);
 
   @override
@@ -38,7 +38,7 @@ class ImageView extends StatelessWidget {
               child: ClipRRect(
             borderRadius: BorderRadius.circular(16),
             child: Hero(
-              tag: Availability,
+              tag: Id,
               child: CachedNetworkImage(
                 imageUrl: Image,
                 fit: BoxFit.fill,

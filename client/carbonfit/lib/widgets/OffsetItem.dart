@@ -59,7 +59,7 @@ class _OffsetItemState extends State<OffsetItem> {
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Hero(
-                    tag: widget.Availability,
+                    tag: widget.Id,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: CachedNetworkImage(
