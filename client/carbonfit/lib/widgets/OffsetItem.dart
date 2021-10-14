@@ -37,7 +37,7 @@ class _OffsetItemState extends State<OffsetItem> {
                 Availability: widget.Availability,
                 Brief: widget.Brief,
                 Image: widget.Image,
-                Link: widget.Link,
+                link: widget.Link,
                 Min: widget.Min)));
       },
       child: Column(

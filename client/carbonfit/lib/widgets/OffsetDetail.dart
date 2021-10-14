@@ -1,6 +1,9 @@
+import 'dart:io';
+import 'package:url_launcher/link.dart';
 import 'package:fixyourprint/widgets/CustomButton.dart';
 import 'package:fixyourprint/widgets/ImageView.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class OffsetDetail extends StatelessWidget {
   final String Image;
@@ -9,14 +12,14 @@ class OffsetDetail extends StatelessWidget {
   final String Brief;
   final String Min;
   final String Availability;
-  final String Link;
+  final String link;
   const OffsetDetail(
       {Key? key,
       required this.Name,
       required this.Availability,
       required this.Brief,
       required this.Image,
-      required this.Link,
+      required this.link,
       required this.Id,
       required this.Min})
       : super(key: key);
@@ -57,7 +60,13 @@ class OffsetDetail extends StatelessWidget {
             Spacer(),
             Padding(
               padding: const EdgeInsets.only(bottom: 10),
-              child: CustomButton(text: "Offset"),
+              child: CustomButton(
+                text: "Offset",
+                onPressed: () async {
+                  final url = link;
+                  await launch(url, forceWebView: true, enableJavaScript: true);
+                },
+              ),
             ),
           ],
         ),

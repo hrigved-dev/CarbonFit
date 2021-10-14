@@ -28,7 +28,6 @@ class _AlternativesState extends State<Alternatives> {
     setState(() {
       _isLoading = false;
     });
-    print(offsetData);
   }
 
   @override
