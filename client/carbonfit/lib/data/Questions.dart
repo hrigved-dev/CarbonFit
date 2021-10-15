@@ -17,7 +17,7 @@ class Questions {
         question: "How many people are there in your family?",
         parameter: 'numberofPeople',
         variable: numberofPeople,
-        lottieUrl: 'https://assets4.lottiefiles.com/packages/lf20_ZoMAMc.json',
+        lottieUrl: 'assets/questions/family.json',
         min: 0,
         max: 10,
         divisions: 10);
@@ -28,8 +28,7 @@ class Questions {
             "Do you use private vehicle as a mode of your transport?\nIf yes, how much litre of fuel do you consume in a week?",
         parameter: 'transport',
         variable: transportVal,
-        lottieUrl:
-            'https://assets6.lottiefiles.com/packages/lf20_rddfnr10.json',
+        lottieUrl: 'assets/questions/car.json',
         min: 0,
         max: 100,
         divisions: 50);
@@ -40,8 +39,7 @@ class Questions {
             "Do you travel by Bus?\nIf yes, how much approximate distance in km do you travel by a Bus in a week?",
         parameter: 'bus',
         variable: busVal,
-        lottieUrl:
-            'https://assets10.lottiefiles.com/packages/lf20_cvcwsr0y.json',
+        lottieUrl: 'assets/questions/bus.json',
         min: 0,
         max: 2000,
         divisions: 100);
@@ -52,7 +50,7 @@ class Questions {
             "Do you take Flights?\nIf yes, how much approximate distance in km is travelled in total?",
         parameter: 'flight',
         variable: flightVal,
-        lottieUrl: 'https://assets7.lottiefiles.com/packages/lf20_av00Bq.json',
+        lottieUrl: 'assets/questions/flight.json',
         min: 0,
         max: 5000,
         divisions: 10);
@@ -63,7 +61,7 @@ class Questions {
             "Do you travel by Train?\nIf yes, how much approximate distance in km do you travel by a Train in a week?",
         parameter: 'train',
         variable: trainVal,
-        lottieUrl: 'https://assets10.lottiefiles.com/packages/lf20_zizREI.json',
+        lottieUrl: 'assets/questions/train.json',
         min: 0,
         max: 2000,
         divisions: 50);
@@ -73,8 +71,7 @@ class Questions {
         question: "How many kg of lpg do you use in a month?",
         parameter: 'lpg',
         variable: lpgVal,
-        lottieUrl:
-            'https://assets7.lottiefiles.com/packages/lf20_buohazi6.json',
+        lottieUrl: 'assets/questions/lpg.json',
         min: 0,
         max: 100,
         divisions: 100);
@@ -85,8 +82,7 @@ class Questions {
             "What is your average electricity consumption in kWh in a month?",
         parameter: 'electricity',
         variable: electricityVal,
-        lottieUrl:
-            'https://assets6.lottiefiles.com/private_files/lf30_guzx9nfr.json',
+        lottieUrl: 'assets/questions/electricity.json',
         min: 0,
         max: 500,
         divisions: 100);
@@ -97,19 +93,17 @@ class Questions {
             "What is the approximate household waste produced daily in kg?",
         parameter: 'waste',
         variable: wasteVal,
-        lottieUrl:
-            'https://assets7.lottiefiles.com/packages/lf20_ruf6eejr.json',
+        lottieUrl: 'assets/questions/waste.json',
         min: 0,
         max: 50,
-        divisions: 10);
+        divisions: 25);
     questionsList.add(ques8);
 
     var ques9 = QuestionModel(
         question: "Which of the following represents your eating habits?",
         parameter: 'food',
         variable: foodVal,
-        lottieUrl:
-            'https://assets6.lottiefiles.com/private_files/lf30_jxtfcl5y.json',
+        lottieUrl: 'assets/questions/food.json',
         min: 0,
         max: 0,
         divisions: 0);
