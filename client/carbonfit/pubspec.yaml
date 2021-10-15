@@ -36,7 +36,6 @@ flutter:
     - assets/login/leafv3.png
     - assets/register/leafv3.png
     - assets/splash/splashscreen.mp4
-    - assets/welcome/earth.gif
     - assets/questions/family.json
     - assets/questions/bus.json
     - assets/questions/car.json
