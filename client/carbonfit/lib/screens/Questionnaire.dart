@@ -8,6 +8,7 @@ import 'package:fixyourprint/widgets/LottieFile.dart';
 import 'package:fixyourprint/widgets/TopProgressBar.dart';
 import 'package:fixyourprint/widgets/ValueSlider.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 
 class Questionnaire extends StatefulWidget {
@@ -106,7 +107,13 @@ class _QuestionnaireState extends State<Questionnaire> {
             SizedBox(
               height: 10,
             ),
-            LottieFile(url: questionsList[index].lottieUrl),
+            Container(
+                height: 170,
+                width: 200,
+                child: LottieBuilder.asset(
+                  questionsList[index].lottieUrl,
+                  fit: BoxFit.contain,
+                )),
             _showSlider
                 ? Column(
                     children: [

@@ -1,5 +1,7 @@
 import 'package:fixyourprint/services/GlobalWarmingService.dart';
+import 'package:fixyourprint/widgets/LottieFile.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class CarbonInfo extends StatefulWidget {
   const CarbonInfo({Key? key}) : super(key: key);
@@ -42,6 +44,10 @@ class _CarbonInfoState extends State<CarbonInfo> {
           ),
           Text(
               'The following graph shows the Carbon Dioxide levels from 2010 to present.'),
+          Container(
+              height: 100,
+              width: 100,
+              child: LottieBuilder.asset('assets/questions/family.json')),
         ],
       ),
     );

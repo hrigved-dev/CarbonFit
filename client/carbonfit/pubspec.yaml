@@ -37,6 +37,16 @@ flutter:
     - assets/register/leafv3.png
     - assets/splash/splashscreen.mp4
     - assets/welcome/earth.gif
+    - assets/questions/family.json
+    - assets/questions/bus.json
+    - assets/questions/car.json
+    - assets/questions/flight.json
+    - assets/questions/train.json
+    - assets/questions/food.json
+    - assets/questions/electricity.json 
+    - assets/questions/lpg.json 
+    - assets/questions/waste.json 
+
   #   - images/a_dot_ham.jpeg
   fonts:
     - family: Lato
