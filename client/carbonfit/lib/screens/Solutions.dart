@@ -10,9 +10,9 @@ class Solutions extends StatefulWidget {
 }
 
 class _SolutionsState extends State<Solutions> {
-  bool _isOffsetSelected = true;
-  bool _isAlternativesSelected = false;
-  Widget child = OffsetScreen();
+  bool _isOffsetSelected = false;
+  bool _isAlternativesSelected = true;
+  Widget child = AlternativesScreen();
 
   Widget showAlternatives() {
     child = AlternativesScreen();
@@ -45,32 +45,6 @@ class _SolutionsState extends State<Solutions> {
                         setState(() {
                           _isOffsetSelected = true;
                           _isAlternativesSelected = false;
-                          showOffsetScreen();
-                        });
-                      },
-                      child: Chip(
-                          padding: EdgeInsets.symmetric(horizontal: 20),
-                          elevation: 1,
-                          backgroundColor:
-                              _isOffsetSelected ? Colors.green : Colors.black12,
-                          label: Text(
-                            'Offset',
-                            style: TextStyle(
-                                fontSize: _isOffsetSelected ? 18 : 16,
-                                fontFamily: 'Lato',
-                                color: _isOffsetSelected
-                                    ? Colors.white
-                                    : Colors.black,
-                                fontWeight: _isOffsetSelected
-                                    ? FontWeight.bold
-                                    : FontWeight.normal),
-                          )),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          _isOffsetSelected = true;
-                          _isAlternativesSelected = false;
                           showAlternatives();
                         });
                       },
@@ -90,6 +64,32 @@ class _SolutionsState extends State<Solutions> {
                                 color: _isAlternativesSelected
                                     ? Colors.white
                                     : Colors.black),
+                          )),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _isOffsetSelected = true;
+                          _isAlternativesSelected = false;
+                          showOffsetScreen();
+                        });
+                      },
+                      child: Chip(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          elevation: 1,
+                          backgroundColor:
+                              _isOffsetSelected ? Colors.green : Colors.black12,
+                          label: Text(
+                            'Offset',
+                            style: TextStyle(
+                                fontSize: _isOffsetSelected ? 18 : 16,
+                                fontFamily: 'Lato',
+                                color: _isOffsetSelected
+                                    ? Colors.white
+                                    : Colors.black,
+                                fontWeight: _isOffsetSelected
+                                    ? FontWeight.bold
+                                    : FontWeight.normal),
                           )),
                     ),
                   ]),
