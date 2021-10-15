@@ -7,7 +7,7 @@ class AlternativesDataProcess {
   var baseURL = "https://carbonfit-api.herokuapp.com/alternatives";
   List<AlternativesDataModel> alternativesDataList = [];
 
-  Future<void> getData() async {
+  Future<List<AlternativesDataModel>> getData() async {
     var response = await dio.get('$baseURL');
     var data = response.data;
 
@@ -22,5 +22,7 @@ class AlternativesDataProcess {
         alternativesDataList.add(alternativesDataModel);
       }
     }
+    print(alternativesDataList);
+    return alternativesDataList;
   }
 }

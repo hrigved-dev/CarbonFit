@@ -33,29 +33,27 @@ class _OffsetScreenState extends State<OffsetScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _isLoading
-          ? GreenLoader()
-          : Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Offset your Footprint',
-                  style: TextStyle(
-                      fontSize: 22,
-                      fontFamily: 'Lato',
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  "Donate to some of the projects",
-                  style: TextStyle(fontSize: 18, fontFamily: 'Lato'),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Offset your Footprint',
+            style: TextStyle(
+                fontSize: 22, fontFamily: 'Lato', fontWeight: FontWeight.bold),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            "Donate to some of the projects",
+            style: TextStyle(fontSize: 18, fontFamily: 'Lato'),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          _isLoading
+              ? Center(child: GreenLoader())
+              : Container(
                   height: 550,
                   child: ListView.builder(
                       shrinkWrap: true,
@@ -72,8 +70,8 @@ class _OffsetScreenState extends State<OffsetScreen> {
                             Min: data.Min);
                       }),
                 ),
-              ],
-            ),
+        ],
+      ),
     );
   }
 }
