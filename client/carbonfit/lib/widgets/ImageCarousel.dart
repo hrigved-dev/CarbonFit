@@ -8,12 +8,20 @@ class ImageCarousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<String> imgList = [
-      'https://static.scientificamerican.com/sciam/cache/file/8B6B0B7A-351F-4CDF-97DFED59CF5305E8_source.jpg?w=590&h=800&67FED11A-5F6D-4DDD-976215B41436D527',
-      'https://www.designingbuildings.co.uk/w/images/b/b1/Carbon_footprint.png',
-      'https://im.whatshot.in/img/2020/Feb/17493020-1624662024218621-8166650013843345075-o-fresh-to-home-cropped-1581593043.jpg',
-      'https://images.theconversation.com/files/59824/original/vjxwjnmp-1411512845.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip',
-      'https://static.stacker.com/s3fs-public/styles/sar_screen_maximum_large/s3/2019-08/Screen%20Shot%202019-08-30%20at%202.15.24%20PM.png',
-      'https://img.etimg.com/thumb/msid-85067962,width-650,imgsize-615692,,resizemode-4,quality-100/global-warming_istock.jpg'
+      'https://www.worldatlas.com/r/w960-q80/upload/c0/db/55/shutterstock-189981317.jpg',
+      'https://im.indiatimes.in/media/content/2016/Nov/pollution_inside_2_1479203012.jpg',
+      'https://carboncopy.info/wp-content/uploads/cropped-metro_20161206_carbon_emissions-e1481061661275.jpg',
+      'https://assets.entrepreneur.com/content/3x2/2000/calculate-reduce-business-carbon-footprint.jpg?auto=webp&quality=95&crop=16:9&width=675',
+      'https://static.toiimg.com/thumb/msid-80595570,imgsize-2203396,width-400,resizemode-4/80595570.jpg',
+      'https://tse2.mm.bing.net/th?id=OIP.N5nc5Qrd6fHYTt_iBl-_eQHaDA&pid=Api&P=0&w=400&h=163',
+    ];
+    final List<String> quotes = [
+    'Greenhouse gases are responsible for trapping heat in the atmosphere',
+    'India Continued With High Carbon Emission, While Global Count Went Stable In 2015',
+    'Carbon dioxide is released as a by-product of several human activities....',
+    'Using a more modern trucking fleet can be 20 percent more energy efficient',
+    'If only more people lived in cities with decent public transportation and intrinsically low carbon emissions per capita. If only more people were more civilized.',
+    'The Earth started to rebel when the carbon in the atmosphere began to swell.',
     ];
     final List<Widget> imageSliders = imgList
         .map((item) => Container(
