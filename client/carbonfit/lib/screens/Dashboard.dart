@@ -27,15 +27,13 @@ class _DashboardState extends State<Dashboard> {
     });
   }
 
-  getParameterEmission() async {
-    await CarbonDataService().getEmission();
-  }
-
   getTotalEmission() async {
     _isLoading = true;
     responseData = await CarbonDataService().getEmission();
+    print(responseData);
     footprint = responseData[0]['total'];
     footprint = double.parse(footprint.toStringAsFixed(2));
+    print(footprint);
     setState(() {
       _isLoading = false;
     });
@@ -45,11 +43,9 @@ class _DashboardState extends State<Dashboard> {
   void initState() {
     super.initState();
     _isLoading = true;
-    setState(() {
-      getParameterEmission();
-      getProfile();
-      getTotalEmission();
-    });
+    // getParameterEmission();
+    getProfile();
+    getTotalEmission();
   }
 
   @override

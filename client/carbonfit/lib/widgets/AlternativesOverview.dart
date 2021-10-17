@@ -45,12 +45,16 @@ class AlternativesOverview extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            Text(
-              data,
-              style: TextStyle(
-                  fontFamily: 'Lato',
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500),
+            SingleChildScrollView(
+              child: Container(
+                child: Text(
+                  data,
+                  style: TextStyle(
+                      fontFamily: 'Lato',
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500),
+                ),
+              ),
             ),
           ],
         ),

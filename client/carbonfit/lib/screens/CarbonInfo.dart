@@ -1,5 +1,3 @@
-import 'package:fixyourprint/services/GlobalWarmingService.dart';
-import 'package:fixyourprint/widgets/LottieFile.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 

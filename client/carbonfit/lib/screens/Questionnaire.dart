@@ -4,7 +4,6 @@ import 'package:fixyourprint/services/CarbonDataService.dart';
 import 'package:fixyourprint/data/Questions.dart';
 import 'package:fixyourprint/widgets/CustomButton.dart';
 import 'package:fixyourprint/widgets/CustomDropdown.dart';
-import 'package:fixyourprint/widgets/LottieFile.dart';
 import 'package:fixyourprint/widgets/TopProgressBar.dart';
 import 'package:fixyourprint/widgets/ValueSlider.dart';
 import 'package:flutter/material.dart';
@@ -57,10 +56,6 @@ class _QuestionnaireState extends State<Questionnaire> {
       topText = 'One More...';
       widthVal = widthVal + 37.5;
     }
-  }
-
-  getLabel(int num) {
-    print(num);
   }
 
   @override

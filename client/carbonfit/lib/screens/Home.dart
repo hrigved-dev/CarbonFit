@@ -1,5 +1,4 @@
 import 'package:fixyourprint/screens/AboutUs.dart';
-import 'package:fixyourprint/screens/OffsetScreen.dart';
 import 'package:fixyourprint/screens/CarbonInfo.dart';
 import 'package:fixyourprint/screens/Countdown.dart';
 import 'package:fixyourprint/screens/Dashboard.dart';

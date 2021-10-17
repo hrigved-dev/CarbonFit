@@ -83,7 +83,8 @@ class CarbonDataService {
         "food": foodVal
       });
       if (response.statusCode == 200) {
-        print(response.data);
+        // print(response.data);
+        return response.data;
       }
     } on DioError catch (e) {
       print(e);
