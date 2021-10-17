@@ -1,3 +1,5 @@
+import 'package:fixyourprint/services/GlobalWarmingService.dart';
+import 'package:fixyourprint/widgets/ImageCarousel.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -16,7 +18,7 @@ class _CarbonInfoState extends State<CarbonInfo> {
   }
 
   getData() async {
-    // await GlobalWarmingService().getData();
+    await GlobalWarmingService().getData();
   }
 
   @override
@@ -33,19 +35,18 @@ class _CarbonInfoState extends State<CarbonInfo> {
           SizedBox(
             height: 5,
           ),
-          Text(
-            'For thousands of years, the natural concentration of CO2 in earth atmosphere was around 280 ppm.\nFrom the beginning of the industrial revolution, human activities like the burning of fossil fuels, deforestation, and livestock have increased this amount by more than 30%.',
-            style: TextStyle(fontSize: 16),
-          ),
+          ImageCarousel(),
+          // Text(
+          //   'For thousands of years, the natural concentration of CO2 in earth atmosphere was around 280 ppm.\nFrom the beginning of the industrial revolution, human activities like the burning of fossil fuels, deforestation, and livestock have increased this amount by more than 30%.',
+          //   style: TextStyle(fontSize: 16),
+          // ),
           SizedBox(
             height: 5,
           ),
           Text(
-              'The following graph shows the Carbon Dioxide levels from 2010 to present.'),
-          Container(
-              height: 100,
-              width: 100,
-              child: LottieBuilder.asset('assets/questions/family.json')),
+            'The following graph shows the Carbon Dioxide levels from 2010 to present:',
+            style: TextStyle(fontFamily: 'Lato', fontSize: 18),
+          ),
         ],
       ),
     );
