@@ -1,15 +1,8 @@
 class AlternativesDataModel {
-  late String Transport;
-  late String Lpg;
-  late String Electricity;
-  late String Waste;
-  late String Food;
+  late String imgUrl;
+  late String parameter;
+  late String data;
 
-  AlternativesDataModel({
-    required this.Electricity,
-    required this.Food,
-    required this.Lpg,
-    required this.Transport,
-    required this.Waste,
-  });
+  AlternativesDataModel(
+      {required this.data, required this.imgUrl, required this.parameter});
 }

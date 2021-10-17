@@ -41,7 +41,7 @@ class ImageView extends StatelessWidget {
               tag: Id,
               child: CachedNetworkImage(
                 imageUrl: Image,
-                fit: BoxFit.fill,
+                fit: BoxFit.cover,
               ),
             ),
           )),

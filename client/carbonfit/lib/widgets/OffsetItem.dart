@@ -64,7 +64,7 @@ class _OffsetItemState extends State<OffsetItem> {
                       borderRadius: BorderRadius.circular(20),
                       child: CachedNetworkImage(
                         imageUrl: widget.Image,
-                        fit: BoxFit.fill,
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),

@@ -80,26 +80,24 @@ class _DashboardDataState extends State<DashboardData> {
                 barinfo: 'Train',
                 color: Color(0xff52b69a),
               ),
+              BarGraphInfo(
+                barinfo: 'LPG',
+                color: Color(0xff34a0a4),
+              ),
+              BarGraphInfo(
+                barinfo: 'Elec',
+                color: Color(0xff168aad),
+              ),
+              BarGraphInfo(
+                barinfo: 'Waste',
+                color: Color(0xff1a759f),
+              ),
+              BarGraphInfo(
+                barinfo: 'Food',
+                color: Color(0xff1e6091),
+              ),
             ],
           ),
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            BarGraphInfo(
-              barinfo: 'LPG',
-              color: Color(0xff34a0a4),
-            ),
-            BarGraphInfo(
-              barinfo: 'Elec',
-              color: Color(0xff168aad),
-            ),
-            BarGraphInfo(
-              barinfo: 'Waste',
-              color: Color(0xff1a759f),
-            ),
-            BarGraphInfo(
-              barinfo: 'Food',
-              color: Color(0xff1e6091),
-            ),
-          ]),
         ],
       ),
     ));
