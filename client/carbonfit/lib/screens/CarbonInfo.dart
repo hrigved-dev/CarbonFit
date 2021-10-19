@@ -1,7 +1,6 @@
 import 'package:fixyourprint/services/GlobalWarmingService.dart';
 import 'package:fixyourprint/widgets/ImageCarousel.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
 class CarbonInfo extends StatefulWidget {
   const CarbonInfo({Key? key}) : super(key: key);
@@ -24,30 +23,32 @@ class _CarbonInfoState extends State<CarbonInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Carbon Data',
-            style: TextStyle(
-                fontSize: 22, fontFamily: 'Lato', fontWeight: FontWeight.bold),
+      body: SingleChildScrollView(
+        child: Container(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Carbon Data',
+                style: TextStyle(
+                    fontSize: 22,
+                    fontFamily: 'Lato',
+                    fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              ImageCarousel(),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                'The following graph shows the Carbon Dioxide levels from 2010 to present:',
+                style: TextStyle(fontFamily: 'Lato', fontSize: 18),
+              ),
+            ],
           ),
-          SizedBox(
-            height: 5,
-          ),
-          ImageCarousel(),
-          // Text(
-          //   'For thousands of years, the natural concentration of CO2 in earth atmosphere was around 280 ppm.\nFrom the beginning of the industrial revolution, human activities like the burning of fossil fuels, deforestation, and livestock have increased this amount by more than 30%.',
-          //   style: TextStyle(fontSize: 16),
-          // ),
-          SizedBox(
-            height: 5,
-          ),
-          Text(
-            'The following graph shows the Carbon Dioxide levels from 2010 to present:',
-            style: TextStyle(fontFamily: 'Lato', fontSize: 18),
-          ),
-        ],
+        ),
       ),
     );
   }

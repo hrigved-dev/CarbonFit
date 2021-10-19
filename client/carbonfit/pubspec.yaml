@@ -47,11 +47,11 @@ flutter:
     - assets/questions/lpg.json 
     - assets/questions/waste.json 
 
-  #   - images/a_dot_ham.jpeg
   fonts:
     - family: Lato
       fonts:
         - asset: assets/fonts/Lato-Regular.ttf
+        
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

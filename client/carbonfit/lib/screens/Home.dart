@@ -1,5 +1,6 @@
 import 'package:fixyourprint/screens/AboutUs.dart';
 import 'package:fixyourprint/screens/CarbonInfo.dart';
+import 'package:fixyourprint/screens/ChatbotScreen.dart';
 import 'package:fixyourprint/screens/Countdown.dart';
 import 'package:fixyourprint/screens/Dashboard.dart';
 import 'package:fixyourprint/screens/FAQs.dart';
@@ -25,7 +26,7 @@ class _HomeState extends State<Home> {
     Dashboard(),
     Solutions(),
     CarbonInfo(),
-    Center(child: Text('ChatBot'))
+    ChatBotScreen(),
   ];
 
   @override
