@@ -13,6 +13,8 @@ class OffsetScreen extends StatefulWidget {
 
 class _OffsetScreenState extends State<OffsetScreen> {
   List<OffsetDataModel> offsetData = [];
+  final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
+
   OffsetData offsetDataService = OffsetData();
   bool _isLoading = true;
 

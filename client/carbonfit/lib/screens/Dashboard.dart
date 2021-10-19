@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:fixyourprint/services/AuthService.dart';
 import 'package:fixyourprint/services/CarbonDataService.dart';
 import 'package:fixyourprint/widgets/DashboardData.dart';
+import 'package:fixyourprint/widgets/FootprintText.dart';
 import 'package:fixyourprint/widgets/GreenLoader.dart';
 import 'package:flutter/material.dart';
 
@@ -30,10 +31,8 @@ class _DashboardState extends State<Dashboard> {
   getTotalEmission() async {
     _isLoading = true;
     responseData = await CarbonDataService().getEmission();
-    print(responseData);
     footprint = responseData[0]['total'];
     footprint = double.parse(footprint.toStringAsFixed(2));
-    print(footprint);
     setState(() {
       _isLoading = false;
     });
@@ -45,7 +44,6 @@ class _DashboardState extends State<Dashboard> {
     _isLoading = true;
     // getParameterEmission();
     getProfile();
-    getTotalEmission();
   }
 
   @override
@@ -66,22 +64,7 @@ class _DashboardState extends State<Dashboard> {
                 SizedBox(
                   height: 5,
                 ),
-                Row(
-                  children: [
-                    Text(
-                      footprint.toString() + ' ',
-                      style: TextStyle(
-                          fontFamily: 'Lato',
-                          fontSize: 50,
-                          color: color,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      "tonnes CO2/year",
-                      style: TextStyle(fontFamily: 'Lato', fontSize: 18),
-                    ),
-                  ],
-                ),
+                FootprintText(),
                 SizedBox(
                   height: 20,
                 ),
