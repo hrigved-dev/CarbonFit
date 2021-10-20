@@ -2,6 +2,7 @@ import 'package:fixyourprint/models/OffsetDataModel.dart';
 import 'package:fixyourprint/services/OffsetData.dart';
 import 'package:fixyourprint/widgets/GreenLoader.dart';
 import 'package:fixyourprint/widgets/OffsetItem.dart';
+import 'package:fixyourprint/widgets/ShimmerWidget.dart';
 import 'package:flutter/material.dart';
 
 class OffsetScreen extends StatefulWidget {
@@ -13,7 +14,6 @@ class OffsetScreen extends StatefulWidget {
 
 class _OffsetScreenState extends State<OffsetScreen> {
   List<OffsetDataModel> offsetData = [];
-  final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
 
   OffsetData offsetDataService = OffsetData();
   bool _isLoading = true;
@@ -53,27 +53,43 @@ class _OffsetScreenState extends State<OffsetScreen> {
           SizedBox(
             height: 10,
           ),
-          _isLoading
-              ? Center(child: GreenLoader())
-              : Container(
-                  height: 550,
-                  child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: offsetData.length,
-                      itemBuilder: (context, int i) {
-                        var data = offsetData[i];
-                        return OffsetItem(
-                            Name: data.Name,
-                            Availability: data.Availability,
-                            Brief: data.Brief,
-                            Id: data.Id,
-                            Image: data.Image,
-                            Link: data.Link,
-                            Min: data.Min);
-                      }),
-                ),
+          Container(
+            height: 550,
+            child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: _isLoading ? 7 : offsetData.length,
+                itemBuilder: (context, int i) {
+                  return _isLoading
+                      ? buildOffsetShimmer()
+                      : OffsetItem(
+                          Name: offsetData[i].Name,
+                          Availability: offsetData[i].Availability,
+                          Brief: offsetData[i].Brief,
+                          Id: offsetData[i].Id,
+                          Image: offsetData[i].Image,
+                          Link: offsetData[i].Link,
+                          Min: offsetData[i].Min);
+                }),
+          ),
         ],
       ),
     );
   }
+
+  Widget buildOffsetShimmer() => Column(
+        children: [
+          ListTile(
+            leading: ShimmerWidget.circular(
+              width: 64,
+              height: 64,
+              shapeBorder: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+            ),
+            title: ShimmerWidget.rectangular(height: 16),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+        ],
+      );
 }

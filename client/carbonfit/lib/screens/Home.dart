@@ -118,9 +118,30 @@ class _HomeState extends State<Home> {
               ),
               GestureDetector(
                 onTap: () {
-                  AuthService().logoutUser();
-                  Navigator.of(context).pushReplacement(PageTransition(
-                      child: LoginScreen(), type: PageTransitionType.fade));
+                  showDialog<String>(
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                      title: const Text('Logout'),
+                      content: const Text(
+                          'Are You Sure you want to Log out of the app?'),
+                      actions: <Widget>[
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, 'Cancel'),
+                          child: const Text('Cancel'),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            AuthService().logoutUser();
+                            Navigator.of(context).pushReplacement(
+                                PageTransition(
+                                    child: LoginScreen(),
+                                    type: PageTransitionType.fade));
+                          },
+                          child: const Text('OK'),
+                        ),
+                      ],
+                    ),
+                  );
                 },
                 child: Row(
                   children: [
