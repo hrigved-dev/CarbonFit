@@ -121,9 +121,17 @@ class _HomeState extends State<Home> {
                   showDialog<String>(
                     context: context,
                     builder: (BuildContext context) => AlertDialog(
-                      title: const Text('Logout'),
+                      title: const Text(
+                        'Logout',
+                        style: TextStyle(
+                            fontFamily: 'Lato',
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
                       content: const Text(
-                          'Are You Sure you want to Log out of the app?'),
+                        'Are You Sure you want to Log out of the app?',
+                        style: TextStyle(fontFamily: 'Lato'),
+                      ),
                       actions: <Widget>[
                         TextButton(
                           onPressed: () => Navigator.pop(context, 'Cancel'),
