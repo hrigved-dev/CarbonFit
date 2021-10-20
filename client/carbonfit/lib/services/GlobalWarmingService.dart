@@ -12,12 +12,11 @@ class GlobalWarmingService {
 
     if (response.statusCode == 200) {
       for (int i = 0; i < data.length; i++) {
-        GlobalWarmingModel globalWarmingModel = GlobalWarmingModel(
-            year: data[i]["year"],
-            trend: data[i]["trend"],
-            cycle: data[i]["cycle"],
-            day: data[i]["day"],
-            month: data[i]["month"]);
+        GlobalWarmingModel globalWarmingModel =
+            GlobalWarmingModel(year: data[i]["year"], trend: data[i]["trend"]);
+        // cycle: data[i]["cycle"],
+        // day: data[i]["day"],
+        // month: data[i]["month"]);
         globalWarming.add(globalWarmingModel);
       }
     }
