@@ -23,6 +23,7 @@ dependencies:
   page_transition: ^2.0.2
   shared_preferences: ^2.0.7
   shimmer: ^2.0.0
+  syncfusion_flutter_charts: ^19.3.46
   url_launcher: ^6.0.12
   video_player: ^2.1.14
 
