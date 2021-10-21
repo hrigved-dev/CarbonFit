@@ -16,10 +16,12 @@ class _LineChartWidgetState extends State<LineChartWidget> {
   List<GlobalWarmingModel> chartData = [];
   bool _isLoading = true;
   GlobalWarmingService globalWarmingService = GlobalWarmingService();
+  TooltipBehavior _tooltipBehavior = TooltipBehavior();
 
   @override
   void initState() {
     super.initState();
+    _tooltipBehavior = TooltipBehavior(enable: true);
     _isLoading = true;
     getChartData();
   }
@@ -37,9 +39,16 @@ class _LineChartWidgetState extends State<LineChartWidget> {
     return _isLoading
         ? buildLineGraphShimmer()
         : SfCartesianChart(
+            title: ChartTitle(text: 'CO2 levels from 2011-present in ppm'),
+            tooltipBehavior: _tooltipBehavior,
+            legend: Legend(isVisible: true),
             series: <ChartSeries>[
               LineSeries<GlobalWarmingModel, double>(
+                  enableTooltip: true,
+                  name: 'CO2 conc.(ppm)',
                   dataSource: chartData,
+                  color: Colors.green.shade700,
+                  width: 3,
                   xValueMapper: (GlobalWarmingModel data, _) =>
                       double.parse(data.year),
                   yValueMapper: (GlobalWarmingModel data, _) =>
