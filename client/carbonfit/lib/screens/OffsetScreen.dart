@@ -1,6 +1,5 @@
 import 'package:fixyourprint/models/OffsetDataModel.dart';
 import 'package:fixyourprint/services/OffsetData.dart';
-import 'package:fixyourprint/widgets/GreenLoader.dart';
 import 'package:fixyourprint/widgets/OffsetItem.dart';
 import 'package:fixyourprint/widgets/ShimmerWidget.dart';
 import 'package:flutter/material.dart';

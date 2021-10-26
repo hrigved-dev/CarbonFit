@@ -1,6 +1,5 @@
 import 'package:fixyourprint/models/GraphDataModel.dart';
 import 'package:fixyourprint/services/CarbonDataService.dart';
-import 'package:fixyourprint/widgets/GreenLoader.dart';
 import 'package:fixyourprint/widgets/PieChartSections.dart';
 import 'package:fixyourprint/widgets/ShimmerWidget.dart';
 import 'package:fl_chart/fl_chart.dart';
