@@ -1,6 +1,5 @@
 import 'package:fixyourprint/models/GlobalWarmingModel.dart';
 import 'package:fixyourprint/services/GlobalWarmingService.dart';
-import 'package:fixyourprint/widgets/GreenLoader.dart';
 import 'package:fixyourprint/widgets/ShimmerWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
