@@ -63,7 +63,7 @@ class _CountdownState extends State<Countdown> {
               Container(
                 height: 500,
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.red, width: 5),
+                  border: Border.all(width: 5),
                   color: Color(0xffD7FFD8),
                   shape: BoxShape.circle,
                 ),
