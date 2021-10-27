@@ -54,21 +54,23 @@ class _OffsetScreenState extends State<OffsetScreen> {
           ),
           Container(
             height: 550,
-            child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: _isLoading ? 7 : offsetData.length,
-                itemBuilder: (context, int i) {
-                  return _isLoading
-                      ? buildOffsetShimmer()
-                      : OffsetItem(
-                          Name: offsetData[i].Name,
-                          Availability: offsetData[i].Availability,
-                          Brief: offsetData[i].Brief,
-                          Id: offsetData[i].Id,
-                          Image: offsetData[i].Image,
-                          Link: offsetData[i].Link,
-                          Min: offsetData[i].Min);
-                }),
+            child: Flexible(
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: _isLoading ? 7 : offsetData.length,
+                  itemBuilder: (context, int i) {
+                    return _isLoading
+                        ? buildOffsetShimmer()
+                        : OffsetItem(
+                            Name: offsetData[i].Name,
+                            Availability: offsetData[i].Availability,
+                            Brief: offsetData[i].Brief,
+                            Id: offsetData[i].Id,
+                            Image: offsetData[i].Image,
+                            Link: offsetData[i].Link,
+                            Min: offsetData[i].Min);
+                  }),
+            ),
           ),
         ],
       ),

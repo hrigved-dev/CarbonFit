@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bubble/bubble.dart';
 import 'package:fixyourprint/services/ChatbotService.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +15,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
   final GlobalKey<AnimatedListState> _listKey = GlobalKey();
   ChatbotService chatbotService = ChatbotService();
   TextEditingController queryController = TextEditingController();
+  ScrollController scrollController = ScrollController();
   List<String> _data = [];
 
   @override
@@ -24,6 +27,8 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
           Padding(
             padding: const EdgeInsets.only(bottom: 70),
             child: AnimatedList(
+                reverse: false,
+                controller: scrollController,
                 key: _listKey,
                 initialItemCount: _data.length,
                 itemBuilder: (BuildContext context, int index,
@@ -68,6 +73,13 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                   textInputAction: TextInputAction.send,
                   onSubmitted: (msg) {
                     this.getResponse();
+                    Timer(
+                        Duration(milliseconds: 2),
+                        () => {
+                              scrollController.jumpTo(
+                                  scrollController.position.maxScrollExtent +
+                                      50)
+                            });
                   },
                 ),
               ),
