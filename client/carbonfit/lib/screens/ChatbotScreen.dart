@@ -1,7 +1,8 @@
-import 'dart:convert';
+import 'dart:async';
+
 import 'package:bubble/bubble.dart';
+import 'package:fixyourprint/services/ChatbotService.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 class ChatBotScreen extends StatefulWidget {
   const ChatBotScreen({Key? key}) : super(key: key);
@@ -12,13 +13,10 @@ class ChatBotScreen extends StatefulWidget {
 
 class _ChatBotScreenState extends State<ChatBotScreen> {
   final GlobalKey<AnimatedListState> _listKey = GlobalKey();
-  static const String BOT_URL = "https://flutter-chatbotapp.herokuapp.com";
+  ChatbotService chatbotService = ChatbotService();
   TextEditingController queryController = TextEditingController();
+  ScrollController scrollController = ScrollController();
   List<String> _data = [];
-
-  http.Client getClient() {
-    return http.Client();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +24,18 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          AnimatedList(
-              key: _listKey,
-              initialItemCount: _data.length,
-              itemBuilder: (BuildContext context, int index,
-                  Animation<double> animation) {
-                return buildItem(_data[index], animation, index);
-              }),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 70),
+            child: AnimatedList(
+                reverse: false,
+                controller: scrollController,
+                key: _listKey,
+                initialItemCount: _data.length,
+                itemBuilder: (BuildContext context, int index,
+                    Animation<double> animation) {
+                  return buildItem(_data[index], animation, index);
+                }),
+          ),
           Align(
             alignment: Alignment.bottomCenter,
             child: ColorFiltered(
@@ -70,6 +73,13 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                   textInputAction: TextInputAction.send,
                   onSubmitted: (msg) {
                     this.getResponse();
+                    Timer(
+                        Duration(milliseconds: 2),
+                        () => {
+                              scrollController.jumpTo(
+                                  scrollController.position.maxScrollExtent +
+                                      50)
+                            });
                   },
                 ),
               ),
@@ -83,16 +93,13 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
   void getResponse() {
     if (queryController.text.length >= 0) {
       this.insertSingleItem(queryController.text);
-      var client = getClient();
       try {
-        client.post(Uri.parse(BOT_URL), body: {"query": queryController.text})
+        chatbotService.getResponse(queryController.text)
           ..then((response) {
             print(response);
-            Map<String, dynamic> data = jsonDecode(response.body);
-            insertSingleItem(data['response'] + "<bot>");
+            insertSingleItem(response + "<bot>");
           });
       } finally {
-        client.close();
         queryController.clear();
       }
     }
@@ -113,11 +120,14 @@ Widget buildItem(String item, Animation<double> animation, int index) {
       child: Container(
         alignment: mine ? Alignment.topLeft : Alignment.topRight,
         child: Bubble(
+          radius: Radius.circular(20),
+          nip: mine ? BubbleNip.leftTop : BubbleNip.rightTop,
           elevation: 1,
-          color: Colors.lightGreen,
+          color: mine ? Colors.green.shade100 : Colors.lightGreen,
           child: Text(
             item.replaceAll("<bot>", ""),
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(
+                color: Colors.black, fontSize: 16, fontFamily: 'Lato'),
           ),
           padding: BubbleEdges.all(10),
         ),

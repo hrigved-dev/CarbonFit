@@ -51,7 +51,16 @@ class ImageView extends StatelessWidget {
                   onTap: () {
                     Navigator.of(context).pop();
                   },
-                  child: Icon(Icons.arrow_back_ios))),
+                  child: Container(
+                      height: 28,
+                      width: 28,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 6),
+                        child: Icon(Icons.arrow_back_ios),
+                      )))),
         ],
       ),
     );

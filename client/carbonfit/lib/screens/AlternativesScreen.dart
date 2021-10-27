@@ -45,16 +45,18 @@ class _AlternativesScreenState extends State<AlternativesScreen> {
           ),
           Container(
             height: 520,
-            child: ListView.builder(
-                itemCount: 5,
-                shrinkWrap: true,
-                itemBuilder: (context, int i) {
-                  return AlternativesItem(
-                    imgUrl: alternatives[i].imgUrl,
-                    parameter: alternatives[i].parameter,
-                    data: alternatives[i].data,
-                  );
-                }),
+            child: Flexible(
+              child: ListView.builder(
+                  itemCount: 5,
+                  shrinkWrap: true,
+                  itemBuilder: (context, int i) {
+                    return AlternativesItem(
+                      imgUrl: alternatives[i].imgUrl,
+                      parameter: alternatives[i].parameter,
+                      data: alternatives[i].data,
+                    );
+                  }),
+            ),
           ),
         ],
       ),
