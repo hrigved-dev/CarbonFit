@@ -21,6 +21,18 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Text(
+          "Ember - the AI Chatbot",
+          style: TextStyle(
+              color: Colors.black,
+              fontFamily: 'Lato',
+              fontWeight: FontWeight.bold,
+              fontSize: 22),
+        ),
+      ),
       backgroundColor: Colors.white,
       body: Stack(
         children: [

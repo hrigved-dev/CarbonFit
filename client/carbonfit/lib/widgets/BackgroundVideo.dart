@@ -14,7 +14,7 @@ class _BackgroundVideoState extends State<BackgroundVideo> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset('assets/splash/splashscreen.mp4')
+    _controller = VideoPlayerController.asset('assets/splash/splashscreen1.mp4')
       ..initialize().then((value) => setState(() {
             _controller.play();
           }));

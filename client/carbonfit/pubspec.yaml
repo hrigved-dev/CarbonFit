@@ -39,7 +39,7 @@ flutter:
   assets:
     - assets/login/leafv3.png
     - assets/register/leafv3.png
-    - assets/splash/splashscreen.mp4
+    - assets/splash/splashscreen1.mp4
     - assets/questions/family.json
     - assets/questions/bus.json
     - assets/questions/car.json
