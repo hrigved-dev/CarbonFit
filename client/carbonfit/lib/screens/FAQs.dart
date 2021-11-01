@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class FAQ extends StatelessWidget {
   List<String> questions = [
     "1) What exactly is my carbon footprint?",

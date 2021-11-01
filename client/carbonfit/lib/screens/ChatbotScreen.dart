@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:bubble/bubble.dart';
 import 'package:fixyourprint/services/ChatbotService.dart';
 import 'package:flutter/material.dart';
