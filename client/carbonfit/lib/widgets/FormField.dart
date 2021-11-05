@@ -4,7 +4,7 @@ class FormFieldWidget extends StatefulWidget {
   final String labelText;
   final void Function(String)? onChanged;
   final bool obscureText;
-  final Icon? suffixIcon;
+  final IconButton? suffixIcon;
   final String? Function(String?)? validator;
   final TextInputType keyboardType;
 
