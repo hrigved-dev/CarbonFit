@@ -23,16 +23,9 @@ An Application that lets you calculate your Carbon Footprint, get Alternatives o
 * We aim at providing an application to calculate the footprint of an individual and also providing them solutions to reduce the same.
 
 
-
-## Demo
-
-<!-- Insert gif or link to demo -->
-
-
 ## Screenshots
 
 <!-- ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
-
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png) -->
+![1](screenshots/1.png)
 
