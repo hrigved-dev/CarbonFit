@@ -84,6 +84,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                   textInputAction: TextInputAction.send,
                   onSubmitted: (msg) {
                     this.getResponse();
+
                     Timer(
                         Duration(milliseconds: 2),
                         () => {

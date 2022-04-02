@@ -104,9 +104,20 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                         obscureText: _obscureText,
                         keyboardType: TextInputType.visiblePassword,
-                        suffixIcon: Icon(_obscureText
-                            ? Icons.visibility
-                            : Icons.visibility_off),
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              _obscureText = !_obscureText;
+                            });
+                          },
+                          icon: Icon(_obscureText
+                              ? Icons.visibility
+                              : Icons.visibility_off),
+                        ),
+
+                        // suffixIcon: Icon(_obscureText
+                        //     ? Icons.visibility
+                        //     : Icons.visibility_off),
                       ),
                       SizedBox(
                         height: 30,
