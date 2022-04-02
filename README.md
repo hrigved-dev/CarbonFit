@@ -3,7 +3,7 @@
 
 An Application that lets you calculate your Carbon Footprint, get Alternatives on how to reduce your carbon emission, Offset your Carbon Emission and talk to Ember-the AI Chatbot.
 
-![logo](screenshots/ecosystem (1).png)
+![logo](screenshots/ecosystem.png)
 
 
 ## Tech Stack
