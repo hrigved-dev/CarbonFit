@@ -23,6 +23,10 @@ An Application that lets you calculate your Carbon Footprint, get Alternatives o
 * Carbon footprint is affected by various factors like electricity consumption, fuel consumption, e-waste, transport preferences etc.
 * We aim at providing an application to calculate the footprint of an individual and also providing them solutions to reduce the same.
 
+## App Demo
+The demo video can be found on the following link: 
+[Demo](https://drive.google.com/file/d/1lll0pWS4P3_3RBDDm09UDg4dygN7yMT3/view?usp=sharing)
+
 
 ## Screenshots
 
@@ -41,7 +45,5 @@ An Application that lets you calculate your Carbon Footprint, get Alternatives o
 ![13](screenshots/13.png)
 ![14](screenshots/14.png)
 
-## Demo Video
-The demo video can be found on the following link: 
-[Demo](https://drive.google.com/file/d/1lll0pWS4P3_3RBDDm09UDg4dygN7yMT3/view?usp=sharing)
+
 
