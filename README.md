@@ -41,3 +41,7 @@ An Application that lets you calculate your Carbon Footprint, get Alternatives o
 ![13](screenshots/13.png)
 ![14](screenshots/14.png)
 
+## Demo Video
+The demo video can be found on the following link: 
+[Demo](https://drive.google.com/file/d/1lll0pWS4P3_3RBDDm09UDg4dygN7yMT3/view?usp=sharing)
+
